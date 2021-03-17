@@ -17,7 +17,10 @@ function Menu(props) {
       <h1>Kwitter</h1>
       <div id="menu-links">
         <Link to="/messages">Messages</Link>
-        {user.token && <button onClick={logout}>Logout</button>}
+        &nbsp;
+        { user.token && <Link to='/profile'>Profile</Link> }
+        &nbsp;
+        { user.token && <button onClick={logout}>Logout</button> }
       </div>
     </div>
   );
