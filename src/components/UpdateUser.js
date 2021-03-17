@@ -3,6 +3,7 @@ import { useStore } from '../store/store.js'
 
 function UpdateUser() {
   const baseURL = 'https://socialapp-api.herokuapp.com/users/'
+  const backupURL = "https://kwitter-api-b.herokuapp.com/users/"
   let username = useStore((state) => state.user.username)
   let token = useStore((state) => state.user.token)
   console.log(token)
@@ -11,23 +12,10 @@ function UpdateUser() {
     about: "",
     displayName: ""
   });
-  
-  const updateRequest = () => {
-    return fetch(baseURL + username, {
-      method: "PATCH",
-      headers: { Accept: "application/json", 
-                Authorization: `Bearer ${token}`, 
-                "Content-Type": "application/json" },
-      body: JSON.stringify(
-        formData
-      ),
-    })
-      .then((res) => res.json())
-  }
 
   const handleUpdate = (e) => {
     e.preventDefault();
-    updateRequest()
+    // updateRequest()
     
     // loginRequest(formData.username, formData.password).then((userData) =>
     //   dispatch({ type: LOGIN, payload: userData })
