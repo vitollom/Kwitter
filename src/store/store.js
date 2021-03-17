@@ -2,7 +2,7 @@ import create from "zustand";
 import { devtools, redux } from "zustand/middleware";
 
 // define the store's initial state
-const initialState = { user: { token: "" }, messages: [] };
+const initialState = { user: { token: "" }, messageData: [] };
 
 // set action types
 export const LOGIN = "LOGIN";
@@ -17,7 +17,7 @@ const reducer = (state, action) => {
     case LOGOUT:
       return { user: {} };
     case GETMESSAGES:
-      return { messages: action.payload }
+      return { messageData: action.payload }
     default:
       return state;
   }

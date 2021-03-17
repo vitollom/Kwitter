@@ -1,30 +1,39 @@
-
 import React, { useEffect } from 'react';
 import { useStore, GETMESSAGES } from '../store/store';
 import { messageList } from '../fetchRequests';
+import MessageItem from "../components/MessageItem.js"
 
 
 
 function MessageList(props) {
   const dispatch = useStore(state => state.dispatch)
-  const messages = useStore(state => state.messages)
-  console.log(messages)
+  const messages = useStore(state => state.messageData.messages)
 
-  useEffect(() => {
-    handleMessages();
-    return () => handleMessages()
-  }, [])
-  const handleMessages = (e) => {
-    //e.preventDefault();
+  const handleMessages = () => {
     messageList().then((messageData) =>
       dispatch({ type: GETMESSAGES, payload: messageData })
     );
   };
+  
+  useEffect(() => {
+    handleMessages();
+    return () => handleMessages()
+  }, [])
+
 
   return (
-    <div>
-      Message List
-    </div>
+    <ul>
+      {messages && messages.map((message) => (
+        <MessageItem 
+          key={message.id}
+          id={message.id}
+          text={message.text}
+          createdAt={message.createdAt}
+          username={message.username}
+          likes={message.likes}
+        />
+      ))}
+    </ul>
   )
 }
 
