@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useStore, GETMESSAGES } from '../store/store';
 import { messageList } from '../fetchRequests';
+import Menu from '../components/Menu.js'
 import MessageItem from "../components/MessageItem.js"
 
 
@@ -22,6 +23,8 @@ function MessageList(props) {
 
 
   return (
+    <>
+    <Menu />
     <ul>
       {messages && messages.map((message) => (
         <MessageItem 
@@ -34,6 +37,7 @@ function MessageList(props) {
         />
       ))}
     </ul>
+    </>
   )
 }
 

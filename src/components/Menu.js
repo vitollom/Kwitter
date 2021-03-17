@@ -8,19 +8,19 @@ function Menu(props) {
   const dispatch = useStore((state) => state.dispatch);
 
   const logout = (e) => {
-    logoutRequest(user.token).then(()=>dispatch({type:"LOGOUT"}));
-    
+    logoutRequest(user.token).then(() => dispatch({ type: "LOGOUT" }));
+
   };
 
   return (
     <div id="menu">
       <h1>Kwitter</h1>
       <div id="menu-links">
-        <Link to="/messages">Messages</Link>
+        {user.token && <Link to="/messages">Messages</Link>}
         &nbsp;
-        { user.token && <Link to='/profile'>Profile</Link> }
+        {user.token && <Link to='/profile'>Profile</Link>}
         &nbsp;
-        { user.token && <button onClick={logout}>Logout</button> }
+        {user.token && <button onClick={logout}>Logout</button>}
       </div>
     </div>
   );

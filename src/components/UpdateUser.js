@@ -5,6 +5,7 @@ import { updateRequest } from "../fetchRequests.js"
 function UpdateUser() {
   let username = useStore((state) => state.user.username)
   let token = useStore((state) => state.user.token)
+  console.log(token)
 
   const [formData, setFormData] = useState({
     password: "",

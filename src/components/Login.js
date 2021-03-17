@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { loginRequest } from "../fetchRequests";
 import { LOGIN, useStore } from "../store/store";
+import CreateUser from "./CreateUser.js"
 
 function Login(props){
   const dispatch = useStore((state) => state.dispatch);
@@ -13,7 +14,7 @@ function Login(props){
     e.preventDefault();
     loginRequest(formData.username, formData.password).then((userData) =>
       dispatch({ type: LOGIN, payload: userData })
-    );
+      );
   };
 
   const handleChange = (e) => {
@@ -24,6 +25,7 @@ function Login(props){
 
   return (
     <>
+    <h2>Your favorite microblogging platform</h2>
       <form id="login-form" onSubmit={handleLogin}>
         <label htmlFor="username">Username</label>
         <input
@@ -44,6 +46,7 @@ function Login(props){
         />
         <button type="submit">Login</button>
       </form>
+      <CreateUser />
     </>
   );
 };
