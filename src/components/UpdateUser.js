@@ -1,12 +1,11 @@
 import React, { useState } from 'react'
 import { useStore } from '../store/store.js'
+import { updateRequest } from "../fetchRequests.js"
 
 function UpdateUser() {
-  const baseURL = 'https://socialapp-api.herokuapp.com/users/'
-  const backupURL = "https://kwitter-api-b.herokuapp.com/users/"
   let username = useStore((state) => state.user.username)
   let token = useStore((state) => state.user.token)
-  console.log(token)
+
   const [formData, setFormData] = useState({
     password: "",
     about: "",
@@ -14,12 +13,13 @@ function UpdateUser() {
   });
 
   const handleUpdate = (e) => {
-    e.preventDefault();
-    // updateRequest()
-    
-    // loginRequest(formData.username, formData.password).then((userData) =>
-    //   dispatch({ type: LOGIN, payload: userData })
-    // );
+    e.preventDefault()
+    updateRequest(token, username, formData)
+    setFormData({
+      password: "",
+      about: "",
+      displayName: ""
+    })
   };
 
   const handleChange = (e) => {
@@ -27,7 +27,7 @@ function UpdateUser() {
     const inputValue = e.target.value;
     setFormData((state) => ({ ...state, [inputName]: inputValue }));
   };
-  
+
   return (
     <>
       <form id="update-user-form" onSubmit={handleUpdate}>

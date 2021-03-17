@@ -1,13 +1,9 @@
 import React, { useState } from "react";
 import { loginRequest } from "../fetchRequests";
-
 import { LOGIN, useStore } from "../store/store";
 
 function Login(props){
   const dispatch = useStore((state) => state.dispatch);
-  // const user = useStore((state) => state.user)
-  // console.log(user)
-
   const [formData, setFormData] = useState({
     username: "",
     password: "",

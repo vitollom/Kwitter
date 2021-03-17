@@ -2,7 +2,6 @@ import { Switch, Route } from "react-router-dom";
 
 import Home from "./views/Home";
 import Profile from "./views/Profile"
-import MessageList from "./views/MessageList"
 import NotFound from "./views/NotFound";
 
 function App() {
