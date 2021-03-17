@@ -2,11 +2,12 @@ import create from "zustand";
 import { devtools, redux } from "zustand/middleware";
 
 // define the store's initial state
-const initialState = { user: {token: ""}, messages: [] };
+const initialState = { user: { token: "" }, messages: [] };
 
 // set action types
 export const LOGIN = "LOGIN";
 export const LOGOUT = "LOGOUT";
+export const CREATEUSER = "CREATEUSER";
 
 // define reducer function
 const reducer = (state, action) => {
@@ -15,10 +16,14 @@ const reducer = (state, action) => {
       return { user: action.payload };
     case LOGOUT:
       return { user: {} };
+    case CREATEUSER:
+      return state;
+
     default:
       return state;
   }
 };
 
 // create useStore hook
-export const useStore = create(devtools(redux(reducer, initialState)))
+export const useStore = create(devtools(redux(reducer, initialState)));
+//
