@@ -9,8 +9,7 @@ export const loginRequest = (username, password) => {
       username,
       password,
     }),
-  })
-    .then((res) => res.json())
+  }).then((res) => res.json());
 };
 
 export const logoutRequest = (token) => {
@@ -30,3 +29,22 @@ export const updateRequest = (token, username, formData) => {
   })
     .then((res) => res.json())
 }
+export const messageList = () => {
+  return fetch(backupURL + "messages?limit=25", {
+    method: "GET",
+    headers: {"Content-Type": "application/json"},
+  }).then((res) => res.json());
+}
+
+export const createUser = (username, displayName, password) => {
+  return fetch(baseURL + "users", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      username,
+      displayName,
+      password,
+    }),
+  }).then((res) => res.json());
+};
+
