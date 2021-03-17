@@ -30,6 +30,7 @@ function CreateUser(props) {
 
   return (
     <>
+      <h3>New to Kwitter!? Sign Up Here: </h3>
       <form id="login-form" onSubmit={handleCreateUser}>
         <label htmlFor="username">Username</label>
         <input
