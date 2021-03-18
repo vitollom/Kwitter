@@ -25,13 +25,13 @@ export const getUser = (username) => {
   }).then((res) => res.json());
 }
 
-export const updateRequest = (token, username, formData) => {
+export const updateRequest = (token, username, updateData) => {
   return fetch(backupURL + "users/" + username, {
     method: "PATCH",
     headers: { Authorization: `Bearer ${token}`, 
               "Content-Type": "application/json" },
     body: JSON.stringify(
-      formData
+      updateData
     ),
   })
     .then((res) => res.json())

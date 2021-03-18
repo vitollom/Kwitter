@@ -29,7 +29,15 @@ function UpdateUser() {
 
   const handleUpdate = (e) => {
     e.preventDefault()
-    updateRequest(token, username, formData)
+    const updateData = {}
+    if (formData.password.length > 3) {
+      updateData.password = formData.password 
+    } if (formData.about.length > 0) {
+      updateData.about = formData.about
+    } if (formData.displayName.length > 3) {
+      updateData.displayName = formData.displayName
+    }
+    updateRequest(token, username, updateData)
     setFormData({
       password: "",
       about: "",
