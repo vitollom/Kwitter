@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react';
 import { useStore, GETMESSAGES } from '../store/store';
 import { messageList } from '../fetchRequests';
-import MessageItem from "../components/MessageItem.js"
+import Menu from '../components/Menu.js'
+import MessageItem from "../components/MessageItem.js";
+import CreateMessage from "../components/CreateMessage";
 
 
 
@@ -22,18 +24,20 @@ function MessageList(props) {
 
 
   return (
+    <>
+    <Menu />
+    <CreateMessage />
     <ul>
       {messages && messages.map((message) => (
         <MessageItem 
+          {...message}
           key={message.id}
-          id={message.id}
-          text={message.text}
-          createdAt={message.createdAt}
-          username={message.username}
-          likes={message.likes}
+          message={message}
+          handleMessages={handleMessages}
         />
       ))}
     </ul>
+    </>
   )
 }
 

@@ -9,16 +9,8 @@ See my.kenzie.academy for details.
 
 ## Credits and References
 
-Team Members:
+Team Members: Lorion Brown, Tahje Hardy, Xander Hussong, Kirill Savvun & Michael Vitollo 
 
-References
-
-
-
-
-
-
----                                                                 Rough draft
-
-
-1. 
+References:
+React Router Docs(Redirect): https://reactrouter.com/web/api/Redirect
+---                                                                

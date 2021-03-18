@@ -3,11 +3,12 @@ import { devtools, redux } from "zustand/middleware";
 
 // define the store's initial state
 
-const initialState = { user: { token: "" }, messageData: [] };
+const initialState = { user: { token: "" }, messageData: [], loggedInUser: {} };
 
 // set action types
 export const LOGIN = "LOGIN";
 export const LOGOUT = "LOGOUT";
+export const GETUSER = "GETUSER"
 export const GETMESSAGES = "GETMESSAGES";
 export const CREATEUSER = "CREATEUSER";
 export const CREATEMESSAGE = "CREATEMESSAGE";
@@ -19,6 +20,8 @@ const reducer = (state, action) => {
       return { user: action.payload };
     case LOGOUT:
       return { user: {} };
+    case GETUSER:
+      return { loggedInUser: action.payload }
     case GETMESSAGES:
       return { messageData: action.payload };
     case CREATEMESSAGE:
