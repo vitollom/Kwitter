@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { createUser, loginRequest } from "../fetchRequests";
+import { createUser } from "../fetchRequests";
 
 import { useStore, CREATEUSER } from "../store/store";
 
@@ -30,6 +30,7 @@ function CreateUser(props) {
 
   return (
     <>
+      <h3>New to Kwitter!? Sign Up Here: </h3>
       <form id="login-form" onSubmit={handleCreateUser}>
         <label htmlFor="username">Username</label>
         <input
