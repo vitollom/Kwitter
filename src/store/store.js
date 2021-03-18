@@ -10,6 +10,7 @@ export const LOGIN = "LOGIN";
 export const LOGOUT = "LOGOUT";
 export const GETMESSAGES = "GETMESSAGES";
 export const CREATEUSER = "CREATEUSER";
+export const CREATEMESSAGE = "CREATEMESSAGE";
 
 // define reducer function
 const reducer = (state, action) => {
@@ -19,7 +20,9 @@ const reducer = (state, action) => {
     case LOGOUT:
       return { user: {} };
     case GETMESSAGES:
-      return { messageData: action.payload }
+      return { messageData: action.payload };
+    case CREATEMESSAGE:
+      return {user: state, messageData: action.payload}
     case CREATEUSER:
       return state;
     default:

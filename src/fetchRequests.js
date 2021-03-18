@@ -38,3 +38,10 @@ export const createUser = (username, displayName, password) => {
   }).then((res) => res.json());
 };
 
+export const createMessage = (text) => {
+  return fetch(backupURL + "messages", {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify(text),
+  }).then((res) => res.json());
+};
