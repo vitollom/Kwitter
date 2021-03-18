@@ -25,12 +25,9 @@ function MessageList(props) {
     <ul>
       {messages && messages.map((message) => (
         <MessageItem 
+          {...message}
           key={message.id}
-          id={message.id}
-          text={message.text}
-          createdAt={message.createdAt}
-          username={message.username}
-          likes={message.likes}
+          message={message}
         />
       ))}
     </ul>
