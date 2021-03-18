@@ -18,6 +18,13 @@ export const logoutRequest = (token) => {
   }).then((res) => res.json());
 };
 
+export const getUser = (username) => {
+  return fetch(backupURL + "users/" + username, {
+    method: "GET",
+    headers: {"Content-Type": "application/json"}
+  }).then((res) => res.json());
+}
+
 export const updateRequest = (token, username, formData) => {
   return fetch(backupURL + "users/" + username, {
     method: "PATCH",
@@ -29,6 +36,7 @@ export const updateRequest = (token, username, formData) => {
   })
     .then((res) => res.json())
 }
+
 export const messageList = () => {
   return fetch(backupURL + "messages?limit=25", {
     method: "GET",

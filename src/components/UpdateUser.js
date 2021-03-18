@@ -1,17 +1,31 @@
-import React, { useState } from 'react'
-import { useStore } from '../store/store.js'
-import { updateRequest } from "../fetchRequests.js"
+import React, { useState, useEffect } from 'react'
+import { useStore, GETUSER } from '../store/store.js'
+import { updateRequest, getUser } from "../fetchRequests.js"
 
 function UpdateUser() {
-  let username = useStore((state) => state.user.username)
-  let token = useStore((state) => state.user.token)
-  console.log(token)
-
+  const username = useStore((state) => state.user.username)
+  const token = useStore((state) => state.user.token)
+  const userInfo = useStore((state) => state.loggedInUser.user)
+  const dispatch = useStore((state) => state.dispatch)
   const [formData, setFormData] = useState({
     password: "",
     about: "",
     displayName: ""
   });
+
+  console.log(userInfo)
+
+  const getUserInfo = () => {
+    {username && getUser(username)
+      .then((userData) =>
+        dispatch({ type: GETUSER, payload: userData })
+      );}
+  };
+
+  useEffect(() => {
+    getUserInfo()
+    return () => getUserInfo()
+  }, [])
 
   const handleUpdate = (e) => {
     e.preventDefault()
@@ -36,6 +50,7 @@ function UpdateUser() {
         <input
           type="text"
           name="displayName"
+          placeholder={userInfo && userInfo.displayName}
           value={formData.displayName}
           onChange={handleChange}
         />
@@ -50,6 +65,7 @@ function UpdateUser() {
         <input
           type="text"
           name="about"
+          placeholder={userInfo && userInfo.about}
           value={formData.about}
           onChange={handleChange}
         />
