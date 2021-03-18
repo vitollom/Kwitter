@@ -28,6 +28,7 @@ function MessageList(props) {
           {...message}
           key={message.id}
           message={message}
+          handleMessages={handleMessages}
         />
       ))}
     </ul>

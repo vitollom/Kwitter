@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { createUser, loginRequest } from "../fetchRequests";
+import { createUser } from "../fetchRequests";
 
 import { useStore, CREATEUSER } from "../store/store";
 

@@ -1,24 +1,17 @@
 import React from 'react'
-import { useStore, GETMESSAGES } from '../store/store.js'
-import { deleteMessage, messageList } from '../fetchRequests.js'
+import { useStore } from '../store/store.js'
+import { deleteMessage } from '../fetchRequests.js'
 
 function MessageItem(props) {
   const username = useStore((state) => state.user.username)
   const token = useStore((state) => state.user.token)
-  const dispatch = useStore((state) => state.dispatch)
   const timestamp = new Date(props.createdAt)
 
-  const handleMessages = () => {
-    messageList().then((messageData) =>
-      dispatch({ type: GETMESSAGES, payload: messageData })
-    );
-  };
   
-  const handleDeleteMessage = (e) => {
-    // e.preventDefault()
+  const handleDeleteMessage = () => {
     deleteMessage(props.id, token).then((res) => {
       if (res.statusCode === 200) {
-        handleMessages()
+        props.handleMessages()
       }
     })
   }
