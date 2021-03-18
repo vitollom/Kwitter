@@ -1,5 +1,5 @@
 const backupURL = "https://kwitter-api-b.herokuapp.com/"
-const baseURL = "https://kwitter-api-b.herokuapp.com/";
+const baseURL = "https://socialapp-api.herokuapp.com/";
 
 
 export const loginRequest = (username, password) => {
@@ -20,14 +20,14 @@ export const logoutRequest = (token) => {
 };
 
 export const messageList = () => {
-  return fetch(backupURL + "messages?limit=25", {
+  return fetch(backupURL + "messages?limit=100", {
     method: "GET",
     headers: {"Content-Type": "application/json"},
   }).then((res) => res.json());
 }
 
 export const createUser = (username, displayName, password) => {
-  return fetch(baseURL + "users", {
+  return fetch(backupURL + "users", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -38,3 +38,9 @@ export const createUser = (username, displayName, password) => {
   }).then((res) => res.json());
 };
 
+export const deleteMessage = (messageId, token) => {
+  return fetch(backupURL + "messages/" + messageId, {
+    method: "DELETE",
+    headers: { Authorization: "Bearer " + token },
+  }).then((res) => res.json())
+}
