@@ -1,10 +1,7 @@
 import React, { useState } from "react";
 import { createUser } from "../fetchRequests";
 
-import { useStore, CREATEUSER } from "../store/store";
-
 function CreateUser(props) {
-  const dispatch = useStore((state) => state.dispatch);
 
   const [formData, setFormData] = useState({
     username: "",
@@ -18,7 +15,7 @@ function CreateUser(props) {
       formData.username,
       formData.displayName,
       formData.password
-    ).then((userData) => dispatch({ type: CREATEUSER, payload: userData }));
+    )
     setFormData({ username: "", displayName: "", password: "" });
   };
 
