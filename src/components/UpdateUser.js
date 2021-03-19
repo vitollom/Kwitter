@@ -37,12 +37,14 @@ function UpdateUser() {
     } if (formData.displayName.length > 3) {
       updateData.displayName = formData.displayName
     }
+    
     updateRequest(token, username, updateData)
     setFormData({
       password: "",
       about: "",
       displayName: ""
     })
+    getUserInfo()
   };
 
   const handleChange = (e) => {
