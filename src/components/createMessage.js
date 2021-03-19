@@ -1,23 +1,20 @@
-import React, { useEffect, useState } from "react";
-import { useStore, CREATEMESSAGE, GETMESSAGES } from "../store/store";
-import { createMessage, messageList } from "../fetchRequests";
+import React, { useState } from "react";
+import { useStore } from "../store/store";
+import { createMessage } from "../fetchRequests";
 
-function CreateMessage(props) {
-  const dispatch = useStore((state => state.dispatch))   
+function CreateMessage(props) {   
   const token = useStore((state) => state.user.token);
   const [userText, setUserText] = useState("");
 
   const createNewMessage = (e) => {
-    e.preventDefault();
-    createMessage(userText, token).then(() => {
-      console.log("Message data", userText)
-      dispatch({type: CREATEMESSAGE})
-     messageList().then((messageData) =>
-      dispatch({ type: GETMESSAGES, payload: messageData.messages })
-    );
-    });
+    createMessage(userText, token).then((res) => {
+        if (res.statusCode === 200) {
+          props.handleMessages()
+        }
+      })
     setUserText("");
   };
+
 
   const handlechange = (e) => {
       setUserText(e.target.value)

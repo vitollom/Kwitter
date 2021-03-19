@@ -26,7 +26,7 @@ function MessageList(props) {
   return (
     <>
     <Menu />
-    <CreateMessage />
+    <CreateMessage  handleMessages={handleMessages} />
     <ul>
       {messages && messages.map((message) => (
         <MessageItem 
