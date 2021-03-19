@@ -1,25 +1,33 @@
-import React, { useEffect } from "react";
-import { useStore, CREATEMESSAGE } from "../store/store";
-import { createMessage } from "../fetchRequests";
+import React, { useEffect, useState } from "react";
+import { useStore, CREATEMESSAGE, GETMESSAGES } from "../store/store";
+import { createMessage, messageList } from "../fetchRequests";
 
 function CreateMessage(props) {
-  const dispatch = useStore((state) => state.dispatch);
-  const [message, setMessage] = useState({
-    text: "",
-  });
+  const dispatch = useStore((state => state.dispatch))   
+  const token = useStore((state) => state.user.token);
+  const [userText, setUserText] = useState("");
 
   const createNewMessage = (e) => {
-    e.preventdefault();
-    createMessage(message.text).then((message) =>
-      dispatch({ type: CREATEMESSAGE, payload: message })
+    e.preventDefault();
+    createMessage(userText, token).then(() => {
+      console.log("Message data", userText)
+      dispatch({type: CREATEMESSAGE})
+     messageList().then((messageData) =>
+      dispatch({ type: GETMESSAGES, payload: messageData.messages })
     );
-    setMessage({ text: "" });
+    });
+    setUserText("");
   };
+
+  const handlechange = (e) => {
+      setUserText(e.target.value)
+  }
 
   return (
       <div>
           <label htmlFor="newMessage">New Message</label>
-          <input type="text" value={message.text} />
+          <input type="text" value={userText} onChange={handlechange} />
+          <button onClick={createNewMessage}>Post</button>
       </div>
   )
 };
