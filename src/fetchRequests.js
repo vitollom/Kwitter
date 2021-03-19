@@ -66,5 +66,18 @@ export const deleteUser = (username, token) => {
   return fetch(backupURL + "users/" + username, {
     method: "DELETE",
     headers: { Authorization: "Bearer " + token },
+}).then((res) => res.json());
+};
+
+export const createMessage = (message, token) => {
+  console.log(message)
+  return fetch(backupURL + "messages", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + token,
+    }, 
+    body: JSON.stringify({ text: message }),
   }).then((res) => res.json());
 };
+  

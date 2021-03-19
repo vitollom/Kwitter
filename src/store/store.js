@@ -3,7 +3,7 @@ import { devtools, redux } from "zustand/middleware";
 
 // define the store's initial state
 
-const initialState = { user: { token: "" }, messageData: [], loggedInUser: {} };
+const initialState = { user: { token: "" }, messageData: [], loggedInUser: {}, message: "" };
 
 // set action types
 export const LOGIN = "LOGIN";
@@ -11,6 +11,7 @@ export const LOGOUT = "LOGOUT";
 export const GETUSER = "GETUSER"
 export const GETMESSAGES = "GETMESSAGES";
 export const CREATEUSER = "CREATEUSER";
+export const CREATEMESSAGE = "CREATEMESSAGE";
 
 // define reducer function
 const reducer = (state, action) => {
@@ -22,7 +23,9 @@ const reducer = (state, action) => {
     case GETUSER:
       return { loggedInUser: action.payload }
     case GETMESSAGES:
-      return { messageData: action.payload }
+      return { messageData: action.payload };
+    case CREATEMESSAGE:
+      return state;
     case CREATEUSER:
       return state;
     default:
