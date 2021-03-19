@@ -2,7 +2,8 @@ import React, { useEffect } from 'react';
 import { useStore, GETMESSAGES } from '../store/store';
 import { messageList } from '../fetchRequests';
 import Menu from '../components/Menu.js'
-import MessageItem from "../components/MessageItem.js"
+import MessageItem from "../components/MessageItem.js";
+import CreateMessage from "../components/CreateMessage";
 
 
 
@@ -19,12 +20,13 @@ function MessageList(props) {
   useEffect(() => {
     handleMessages();
     return () => handleMessages()
-  }, [])
+  }, [dispatch])
 
 
   return (
     <>
     <Menu />
+    <CreateMessage  handleMessages={handleMessages} />
     <ul>
       {messages && messages.map((message) => (
         <MessageItem 
