@@ -19,6 +19,7 @@ function CreateUser(props) {
       formData.displayName,
       formData.password
     ).then((userData) => dispatch({ type: CREATEUSER, payload: userData }));
+    setFormData({ username: "", displayName: "", password: "" });
   };
 
   const handleChange = (e) => {
