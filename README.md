@@ -13,4 +13,5 @@ Team Members: Lorion Brown, Tahje Hardy, Xander Hussong, Kirill Savvun & Michael
 
 References:
 React Router Docs(Redirect): https://reactrouter.com/web/api/Redirect
+HTML "pattern" attribute: https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/pattern
 ---                                                                
