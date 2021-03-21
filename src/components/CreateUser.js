@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { createUser } from "../fetchRequests";
 
 function CreateUser(props) {
-
+  const [errors, setErrors] = useState("")
   const [formData, setFormData] = useState({
     username: "",
     displayName: "",
@@ -15,8 +15,14 @@ function CreateUser(props) {
       formData.username,
       formData.displayName,
       formData.password
-    )
-    setFormData({ username: "", displayName: "", password: "" });
+    ).then(res => {
+      if (res.statusCode !== 200) {
+        setErrors(`${res.message}, please try again`)
+      } else {
+        setFormData({ username: "", displayName: "", password: "" });
+        setErrors(`You have successfully created a user: ${res.user.username}!`)
+      }
+    })
   };
 
   const handleChange = (e) => {
@@ -62,6 +68,7 @@ function CreateUser(props) {
         />
         <button type="submit"> Submit </button>
       </form>
+      {errors}
     </>
   );
 }
