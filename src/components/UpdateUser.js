@@ -16,10 +16,10 @@ function UpdateUser() {
   console.log(userInfo)
 
   const getUserInfo = () => {
-    {username && getUser(username)
+    username && getUser(username)
       .then((userData) =>
         dispatch({ type: GETUSER, payload: userData })
-      );}
+      );
   };
 
   useEffect(() => {

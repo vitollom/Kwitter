@@ -17,7 +17,9 @@ function App() {
         <Route path='/profile' component={Profile}>
           {!token && <Redirect to="/" />}
         </Route>
-        <Route path="/messages" component={MessageList} />
+        <Route path="/messages" component={MessageList}>
+          {!token && <Redirect to="/" />}
+        </Route>
         <Route component={NotFound} />
       </Switch>
     </div>

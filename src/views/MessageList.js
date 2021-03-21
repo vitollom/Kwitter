@@ -20,7 +20,7 @@ function MessageList(props) {
   useEffect(() => {
     handleMessages();
     return () => handleMessages()
-  }, [dispatch])
+  }, [])
 
 
   return (
