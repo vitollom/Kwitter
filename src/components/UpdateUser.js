@@ -7,6 +7,7 @@ function UpdateUser() {
   const token = useStore((state) => state.user.token)
   const userInfo = useStore((state) => state.loggedInUser.user)
   const dispatch = useStore((state) => state.dispatch)
+  const [errors, setErrors] = useState("")
   const [formData, setFormData] = useState({
     password: "",
     about: "",
@@ -30,21 +31,29 @@ function UpdateUser() {
   const handleUpdate = (e) => {
     e.preventDefault()
     const updateData = {}
-    if (formData.password.length > 3) {
-      updateData.password = formData.password 
+    if (formData.password) {
+      updateData.password = formData.password
     } if (formData.about.length > 0) {
       updateData.about = formData.about
-    } if (formData.displayName.length > 3) {
+    } if (formData.displayName) {
       updateData.displayName = formData.displayName
     }
-    
+
     updateRequest(token, username, updateData)
-    setFormData({
-      password: "",
-      about: "",
-      displayName: ""
-    })
-    getUserInfo()
+      .then(res => {
+        if (res.statusCode === 200) {
+          setFormData({
+            password: "",
+            about: "",
+            displayName: ""
+          })
+          setErrors('You have successfully updated your account!')
+          getUserInfo()
+        }
+        else {
+          setErrors(res.message)
+        }
+      })
   };
 
   const handleChange = (e) => {
@@ -60,6 +69,8 @@ function UpdateUser() {
         <input
           type="text"
           name="displayName"
+          pattern=".{3,20}"
+          title="Please enter a display name between 3 and 20 characters long"
           placeholder={userInfo && userInfo.displayName}
           value={formData.displayName}
           onChange={handleChange}
@@ -68,6 +79,8 @@ function UpdateUser() {
         <input
           type="password"
           name="password"
+          pattern=".{3,20}"
+          title="Please enter a password between 3 and 20 characters long"
           value={formData.password}
           onChange={handleChange}
         />
@@ -75,12 +88,15 @@ function UpdateUser() {
         <input
           type="text"
           name="about"
+          pattern=".{0,255}"
           placeholder={userInfo && userInfo.about}
           value={formData.about}
           onChange={handleChange}
         />
+        {`${formData.about.length}/255`}
         <button type="submit">Update</button>
       </form>
+      {errors}
     </>
   )
 }
