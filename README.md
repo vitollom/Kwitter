@@ -13,4 +13,5 @@ Team Members: Lorion Brown, Tahje Hardy, Xander Hussong, Kirill Savvun & Michael
 
 References:
 React Router Docs(Redirect): https://reactrouter.com/web/api/Redirect
+Pete's Monday (3/22/2021) Demo on set user picture.
 ---                                                                
