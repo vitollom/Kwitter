@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useStore, GETMESSAGES } from '../store/store';
+import { useStore, GET_MESSAGES } from '../store/store';
 import { messageList } from '../fetchRequests';
 import Menu from '../components/Menu.js'
 import MessageItem from "../components/MessageItem.js";
@@ -13,7 +13,7 @@ function MessageList(props) {
 
   const handleMessages = () => {
     messageList().then((messageData) =>
-      dispatch({ type: GETMESSAGES, payload: messageData })
+      dispatch({ type: GET_MESSAGES, payload: messageData })
     );
   };
   

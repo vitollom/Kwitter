@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useStore, GETUSER } from '../store/store.js'
+import { useStore, GET_USER } from '../store/store.js'
 import { updateRequest, getUser } from "../fetchRequests.js"
 
 function UpdateUser() {
@@ -19,7 +19,7 @@ function UpdateUser() {
   const getUserInfo = () => {
     username && getUser(username)
       .then((userData) =>
-        dispatch({ type: GETUSER, payload: userData })
+        dispatch({ type: GET_USER, payload: userData })
       );
   };
 
