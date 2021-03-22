@@ -54,6 +54,15 @@ export const createUser = (username, displayName, password) => {
     }),
   }).then((res) => res.json());
 };
+export const addLike = (messageId) => {
+  return fetch(backupURL + "messages/", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      messageId,
+    }),
+  }).then((res) => res.json());
+};
 
 export const deleteMessage = (messageId, token) => {
   return fetch(backupURL + "messages/" + messageId, {
@@ -62,15 +71,14 @@ export const deleteMessage = (messageId, token) => {
   }).then((res) => res.json());
 };
 
-
 export const createMessage = (message, token) => {
-  console.log(message)
+  console.log(message);
   return fetch(backupURL + "messages", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       Authorization: "Bearer " + token,
-    }, 
+    },
     body: JSON.stringify({ text: message }),
   }).then((res) => res.json());
 };
