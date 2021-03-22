@@ -61,3 +61,10 @@ export const deleteMessage = (messageId, token) => {
     headers: { Authorization: "Bearer " + token },
   }).then((res) => res.json());
 };
+
+export const deleteUser = (username, token) => {
+  return fetch(backupURL + "users/" + username, {
+    method: "DELETE",
+    headers: { Authorization: "Bearer " + token },
+  }).then((res) => res.json());
+};
