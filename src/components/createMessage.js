@@ -9,10 +9,11 @@ function CreateMessage(props) {
 
   const createNewMessage = (e) => {
     createMessage(userText, token).then((res) => {
-      if (res.statusCode === 200) {
-        props.handleMessages()
-      }
-    })
+        if (res.statusCode === 200) {
+          props.handleMessages()
+          props.setRefresh(30)
+        }
+      })
     setUserText("");
   };
 
