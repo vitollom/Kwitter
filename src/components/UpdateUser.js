@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react'
-import { useStore, GETUSER } from '../store/store.js'
+import { useStore, GET_USER } from '../store/store.js'
 import { updateRequest, getUser } from "../fetchRequests.js"
+import '../assets/index.css'
 
 function UpdateUser() {
   const username = useStore((state) => state.user.username)
   const token = useStore((state) => state.user.token)
   const userInfo = useStore((state) => state.loggedInUser.user)
   const dispatch = useStore((state) => state.dispatch)
-  
-
+  const [errors, setErrors] = useState("")
   const [formData, setFormData] = useState({
     password: "",
     about: "",
@@ -18,10 +18,10 @@ function UpdateUser() {
   console.log(userInfo)
 
   const getUserInfo = () => {
-      username && getUser(username)
-        .then((userData) =>
-          dispatch({ type: GETUSER, payload: userData })
-        );
+    username && getUser(username)
+      .then((userData) =>
+        dispatch({ type: GET_USER, payload: userData })
+      );
   };
 
   useEffect(() => {
@@ -32,19 +32,29 @@ function UpdateUser() {
   const handleUpdate = (e) => {
     e.preventDefault()
     const updateData = {}
-    if (formData.password.length > 3) {
+    if (formData.password) {
       updateData.password = formData.password
     } if (formData.about.length > 0) {
       updateData.about = formData.about
-    } if (formData.displayName.length > 3) {
+    } if (formData.displayName) {
       updateData.displayName = formData.displayName
     }
+
     updateRequest(token, username, updateData)
-    setFormData({
-      password: "",
-      about: "",
-      displayName: ""
-    })
+      .then(res => {
+        if (res.statusCode === 200) {
+          setFormData({
+            password: "",
+            about: "",
+            displayName: ""
+          })
+          setErrors('You have successfully updated your account!')
+          getUserInfo()
+        }
+        else {
+          setErrors(res.message)
+        }
+      })
   };
 
   const handleChange = (e) => {
@@ -60,6 +70,8 @@ function UpdateUser() {
         <input
           type="text"
           name="displayName"
+          pattern=".{3,20}"
+          title="Please enter a display name between 3 and 20 characters long"
           placeholder={userInfo && userInfo.displayName}
           value={formData.displayName}
           onChange={handleChange}
@@ -68,6 +80,8 @@ function UpdateUser() {
         <input
           type="password"
           name="password"
+          pattern=".{3,20}"
+          title="Please enter a password between 3 and 20 characters long"
           value={formData.password}
           onChange={handleChange}
         />
@@ -75,12 +89,15 @@ function UpdateUser() {
         <input
           type="text"
           name="about"
+          pattern=".{0,255}"
           placeholder={userInfo && userInfo.about}
           value={formData.about}
           onChange={handleChange}
         />
+        {`${formData.about.length}/255`}
         <button type="submit">Update</button>
       </form>
+      {errors}
     </>
   )
 }

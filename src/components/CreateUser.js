@@ -1,11 +1,8 @@
 import React, { useState } from "react";
 import { createUser } from "../fetchRequests";
 
-import { useStore, CREATEUSER } from "../store/store";
-
 function CreateUser(props) {
-  const dispatch = useStore((state) => state.dispatch);
-
+  const [errors, setErrors] = useState("")
   const [formData, setFormData] = useState({
     username: "",
     displayName: "",
@@ -18,8 +15,14 @@ function CreateUser(props) {
       formData.username,
       formData.displayName,
       formData.password
-    ).then((userData) => dispatch({ type: CREATEUSER, payload: userData }));
-    setFormData({ username: "", displayName: "", password: "" });
+    ).then(res => {
+      if (res.statusCode !== 200) {
+        setErrors(`${res.message}, please try again`)
+      } else {
+        setFormData({ username: "", displayName: "", password: "" });
+        setErrors(`You have successfully created a user: ${res.user.username}!`)
+      }
+    })
   };
 
   const handleChange = (e) => {
@@ -36,6 +39,8 @@ function CreateUser(props) {
         <input
           type="text"
           name="username"
+          pattern=".{3,20}"   
+          title="Please enter a username between 3 and 20 characters long"
           value={formData.username}
           autoFocus
           required
@@ -45,6 +50,8 @@ function CreateUser(props) {
         <input
           type="password"
           name="password"
+          pattern=".{3,20}"   
+          title="Please enter a password between 3 and 20 characters long"
           value={formData.password}
           required
           onChange={handleChange}
@@ -53,12 +60,15 @@ function CreateUser(props) {
         <input
           type="displayName"
           name="displayName"
+          pattern=".{3,20}"   
+          title="Please enter a display name between 3 and 20 characters long"
           value={formData.displayName}
           required
           onChange={handleChange}
         />
         <button type="submit"> Submit </button>
       </form>
+      {errors}
     </>
   );
 }

@@ -3,7 +3,7 @@ import "./App.css";
 
 const baseURL = "https://kwitter-api-b.herokuapp.com/";
 
-function App() {
+function GetUser() {
   const [userData, setUserData] = useState({});
 
   useEffect(() => {
@@ -27,4 +27,4 @@ function App() {
   );
 }
 
-export default App;
+export default GetUser;
