@@ -7,6 +7,8 @@ function UpdateUser() {
   const token = useStore((state) => state.user.token)
   const userInfo = useStore((state) => state.loggedInUser.user)
   const dispatch = useStore((state) => state.dispatch)
+  
+
   const [formData, setFormData] = useState({
     password: "",
     about: "",
@@ -16,10 +18,10 @@ function UpdateUser() {
   console.log(userInfo)
 
   const getUserInfo = () => {
-    {username && getUser(username)
-      .then((userData) =>
-        dispatch({ type: GETUSER, payload: userData })
-      );}
+      username && getUser(username)
+        .then((userData) =>
+          dispatch({ type: GETUSER, payload: userData })
+        );
   };
 
   useEffect(() => {
@@ -31,7 +33,7 @@ function UpdateUser() {
     e.preventDefault()
     const updateData = {}
     if (formData.password.length > 3) {
-      updateData.password = formData.password 
+      updateData.password = formData.password
     } if (formData.about.length > 0) {
       updateData.about = formData.about
     } if (formData.displayName.length > 3) {
