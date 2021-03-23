@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { useStore } from "../store/store";
 import { createMessage } from "../fetchRequests";
+import '../assets/index.css'
 
-function CreateMessage(props) {   
+function CreateMessage(props) {
   const token = useStore((state) => state.user.token);
   const [userText, setUserText] = useState("");
 
@@ -16,17 +17,20 @@ function CreateMessage(props) {
     setUserText("");
   };
 
-
   const handlechange = (e) => {
-      setUserText(e.target.value)
+    setUserText(e.target.value)
   }
 
   return (
-      <div>
-          <label htmlFor="newMessage">New Message</label>
-          <input type="text" value={userText} onChange={handlechange} />
-          <button onClick={createNewMessage}>Post</button>
-      </div>
+    <div>
+      <label htmlFor="newMessage">New Message</label>
+      <input
+        type="text"
+        value={userText}
+        onChange={handlechange}
+      />
+      <button onClick={createNewMessage}>Post</button>
+    </div>
   )
 };
 
