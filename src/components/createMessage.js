@@ -10,6 +10,7 @@ function CreateMessage(props) {
     createMessage(userText, token).then((res) => {
         if (res.statusCode === 200) {
           props.handleMessages()
+          props.setRefresh(30)
         }
       })
     setUserText("");
