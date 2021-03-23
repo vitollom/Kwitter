@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useStore, GET_USER } from '../store/store.js'
 import { updateRequest, getUser } from "../fetchRequests.js"
+import '../assets/index.css'
 
 function UpdateUser() {
   const username = useStore((state) => state.user.username)
