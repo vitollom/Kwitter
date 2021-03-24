@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { useStore } from "../store/store";
 import { logoutRequest } from "../fetchRequests";
 
+import "../assets/Menu.css"
+
 function Menu(props) {
   const user = useStore((state) => state.user);
   const dispatch = useStore((state) => state.dispatch);
