@@ -5,6 +5,8 @@ import Menu from '../components/Menu.js'
 import MessageItem from "../components/MessageItem.js";
 import CreateMessage from "../components/createMessage";
 
+import "../assets/MessageList.css"
+
 function MessageList(props) {
   const dispatch = useStore(state => state.dispatch)
   const messages = useStore(state => state.messageData.messages)
@@ -41,7 +43,8 @@ function MessageList(props) {
   return (
     <div className="MessageList">
       <Menu />
-      <CreateMessage handleMessages={handleMessages} />
+      {refresh}
+      <CreateMessage className="CreateMessage" handleMessages={handleMessages} setRefresh={setRefresh} />
       <ul>
         {messages && messages.map((message) => (
           <MessageItem
@@ -49,6 +52,7 @@ function MessageList(props) {
             key={message.id}
             message={message}
             handleMessages={handleMessages}
+            setRefresh={setRefresh}
           />
         ))}
       </ul>
