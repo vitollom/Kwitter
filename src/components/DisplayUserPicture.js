@@ -5,15 +5,17 @@ function DisplayUserPicture() {
   const baseURL = "https://socialapp-api.herokuapp.com";
   const userInfo = useStore((state) => state.loggedInUser.user)
 
-  let imageURL
+  let userImage
   if (userInfo) {
-    imageURL = baseURL + userInfo.pictureLocation
+    userImage = <img src={baseURL + userInfo.pictureLocation} />
+  } else {
+    userImage = "Loading..."
   }
 
-  console.log(imageURL)
-
   return (
-    <img src={imageURL} />
+    <>
+    {userImage}
+    </>
   )
 }
 
