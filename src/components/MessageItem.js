@@ -27,7 +27,7 @@ function MessageItem(props) {
   return (
     <li>
       <Card>
-        <Card.Header>Created @ {timestamp.toLocaleString()}</Card.Header>
+        <Card.Header className="card-header">{timestamp.toLocaleString()}</Card.Header>
         <Card.Body>
           <Card.Title>{`${props.username}:`}</Card.Title>
           <Card.Text>

@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useStore } from "../store/store";
 import { logoutRequest } from "../fetchRequests";
-import { NAV } from "react-bootstrap"
+import { Nav } from "react-bootstrap"
 import "../assets/Menu.css"
 
 function Menu(props) {
@@ -15,16 +15,28 @@ function Menu(props) {
   };
 
   return (
-    <div id="menu">
-      <h1>Kwitter</h1>
-      <div id="menu-links">
-        {user.token && <Link to="/messages">Messages</Link>}
+    <Nav className="justify-content-between" activeKey="/home">
+      <div className="nav-left">
         &nbsp;
-        {user.token && <Link to='/profile'>Profile</Link>}
-        &nbsp;
-        {user.token && <button onClick={logout}>Logout</button>}
+        Kwitter
       </div>
-    </div>
+      <div className="nav-right">
+        <Nav.Item>
+          <Link to="/" >Home</Link> &nbsp;
+      </Nav.Item>
+        <Nav.Item>
+          <Link to="/profile">Profile</Link> &nbsp;
+      </Nav.Item>
+        <Nav.Item>
+          <Link to="/messages">Message Page</Link> &nbsp;
+      </Nav.Item>
+        <Nav.Item>
+          <Link onClick={logout}>
+            Logout
+      </Link> &nbsp;
+      </Nav.Item>
+      </div>
+    </Nav>
   );
 };
 

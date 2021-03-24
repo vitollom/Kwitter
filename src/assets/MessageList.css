@@ -20,7 +20,12 @@ li {
   justify-content: space-between;
 }
 
+div.card-header {
+  background-color: rgb(205, 253, 229);
+}
+
 .CreateMessage {
+  margin-top: 10px;
   width: 90%;
   display: flex;
   justify-content: center;

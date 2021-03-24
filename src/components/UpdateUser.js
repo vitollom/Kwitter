@@ -15,8 +15,6 @@ function UpdateUser() {
     displayName: ""
   });
 
-  console.log(userInfo)
-
   const getUserInfo = () => {
     username && getUser(username)
       .then((userData) =>
