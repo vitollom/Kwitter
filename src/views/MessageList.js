@@ -3,7 +3,7 @@ import { useStore, GETMESSAGES } from '../store/store';
 import { messageList } from '../fetchRequests';
 import Menu from '../components/Menu.js'
 import MessageItem from "../components/MessageItem.js";
-import CreateMessage from "../components/CreateMessage";
+import CreateMessage from "../components/createMessage";
 
 
 

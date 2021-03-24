@@ -7,7 +7,7 @@ function MessageItem(props) {
   const token = useStore((state) => state.user.token)
   const timestamp = new Date(props.createdAt)
 
-  
+
   const handleDeleteMessage = () => {
     deleteMessage(props.id, token).then((res) => {
       if (res.statusCode === 200) {
@@ -15,23 +15,27 @@ function MessageItem(props) {
       }
     })
   }
-  
+
   let deleteButton
   if (username === props.username) {
     deleteButton = <button onClick={handleDeleteMessage}>Delete Message</button>
   }
-  
+
   return (
     <li>
-      Created @ {timestamp.toLocaleString()}
-      &nbsp;
-      By: {props.username}
-      <br/>
-      {props.text}
-      <br/>
-      Likes: {props.likes.length}
-      &nbsp;
-      {deleteButton}
+      <div class="card">
+        <div class="card-header">
+          Created @ {timestamp.toLocaleString()}
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">By: {props.username}</h5>
+          <p class="card-text">{props.text}</p>
+        </div>
+        <div class="card-footer">
+          Likes: {props.likes.length}
+          {deleteButton}
+        </div>
+      </div>
     </li>
   )
 }
