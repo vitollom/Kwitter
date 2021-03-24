@@ -13,6 +13,7 @@ function MessageItem(props) {
     deleteMessage(props.id, token).then((res) => {
       if (res.statusCode === 200) {
         props.handleMessages()
+        props.setRefresh(30)
       }
     })
   }
