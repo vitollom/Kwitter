@@ -24,12 +24,14 @@ function CreateMessage(props) {
   return (
     <div className="CreateMessage" >
       <label htmlFor="newMessage">New Message</label>
+      &nbsp;
       <input
         className="new-message-input"
         type="text"
         value={userText}
         onChange={handlechange}
       />
+      &nbsp;
       <button onClick={createNewMessage}>Post</button>
     </div>
   )

@@ -8,7 +8,6 @@ function MessageItem(props) {
   const token = useStore((state) => state.user.token)
   const timestamp = new Date(props.createdAt)
 
-
   const handleDeleteMessage = () => {
     deleteMessage(props.id, token).then((res) => {
       if (res.statusCode === 200) {
@@ -37,7 +36,7 @@ function MessageItem(props) {
         </Card.Body>
         <Card.Footer className="card-footer">
           <span>
-          {likeButton}
+            {likeButton}
           &nbsp;
           Likes: {props.likes.length}
           </span>
