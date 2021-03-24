@@ -1,6 +1,7 @@
 import React from 'react'
 import { useStore } from '../store/store.js'
 import { deleteMessage } from '../fetchRequests.js'
+import { Card } from "react-bootstrap"
 
 function MessageItem(props) {
   const username = useStore((state) => state.user.username)
@@ -23,19 +24,19 @@ function MessageItem(props) {
 
   return (
     <li>
-      <div class="card">
-        <div class="card-header">
-          Created @ {timestamp.toLocaleString()}
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">By: {props.username}</h5>
-          <p class="card-text">{props.text}</p>
-        </div>
-        <div class="card-footer">
+      <Card>
+        <Card.Header>Created @ {timestamp.toLocaleString()}</Card.Header>
+        <Card.Body>
+          <Card.Title>By: {props.username}</Card.Title>
+          <Card.Text>
+            <p class="card-text">{props.text}</p>
+          </Card.Text>
+        </Card.Body>
+        <Card.Footer>
           Likes: {props.likes.length}
           {deleteButton}
-        </div>
-      </div>
+        </Card.Footer>
+      </Card>
     </li>
   )
 }

@@ -24,7 +24,7 @@ function MessageList(props) {
 
 
   return (
-    <>
+    <div className="MessageList">
     <Menu />
     <CreateMessage  handleMessages={handleMessages} />
     <ul>
@@ -37,7 +37,7 @@ function MessageList(props) {
         />
       ))}
     </ul>
-    </>
+    </div>
   )
 }
 
