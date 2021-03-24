@@ -1,0 +1,39 @@
+ul {
+  list-style-type: none;
+  width: 90%;
+  margin: 0px;
+  padding: 0px
+}
+
+li {
+  margin-top: 10px;
+}
+
+.MessageList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.CreateMessage {
+  width: 90%;
+  display: flex;
+  justify-content: center;
+}
+
+.CreateMessage button {
+  width: 5%
+}
+
+.CreateMessage label {
+  font-size: large;
+}
+
+.new-message-input {
+  width: 88%
+}
