@@ -1,0 +1,23 @@
+div.container-fluid {
+    margin-top: 10px;
+}
+
+.profile-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.user-picture {
+    max-width: 100%;
+}
+
+.upload-picture {
+    margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.upload-picture input {
+    margin: 2px;
+}
