@@ -1,33 +1,18 @@
 import React, { useState, useEffect } from 'react'
-import { useStore, GET_USER } from '../store/store.js'
-import { updateRequest, getUser } from "../fetchRequests.js"
+import { useStore } from '../store/store.js'
+import { updateRequest } from "../fetchRequests.js"
 import '../assets/index.css'
 
-function UpdateUser() {
+function UpdateUser(props) {
   const username = useStore((state) => state.user.username)
   const token = useStore((state) => state.user.token)
   const userInfo = useStore((state) => state.loggedInUser.user)
-  const dispatch = useStore((state) => state.dispatch)
   const [errors, setErrors] = useState("")
   const [formData, setFormData] = useState({
     password: "",
     about: "",
     displayName: ""
   });
-
-  console.log(userInfo)
-
-  const getUserInfo = () => {
-    username && getUser(username)
-      .then((userData) =>
-        dispatch({ type: GET_USER, payload: userData })
-      );
-  };
-
-  useEffect(() => {
-    getUserInfo()
-    return () => getUserInfo()
-  }, [])
 
   const handleUpdate = (e) => {
     e.preventDefault()
@@ -49,7 +34,7 @@ function UpdateUser() {
             displayName: ""
           })
           setErrors('You have successfully updated your account!')
-          getUserInfo()
+          props.getUserInfo()
         }
         else {
           setErrors(res.message)
