@@ -25,16 +25,22 @@ function MessageItem(props) {
   }
 
   const handleAddLike = (e) => {
-    addLike(props.message.id, token);
-    //Add .then to addLike fetch request
-    //Inside of .then, dispatch addLike
+    addLike(props.message.id, token).then((res) => {
+      if (res.statusCode === 200) {
+        props.handleMessages();
+      }
+    });
   };
 
   const handleRemoveLike = (e) => {
     const alreadyLiked = props.likes.find((like) => {
       return like.username === username;
     });
-    removeLike(alreadyLiked.id, token);
+    removeLike(alreadyLiked.id, token).then((res) => {
+      if (res.statusCode === 200) {
+        props.handleMessages();
+      }
+    });
     //Add .then to removeLike fetch request
     //Inside of .then, dispatch removeLike
   };
