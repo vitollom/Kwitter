@@ -4,11 +4,13 @@ import DeleteUser from "../components/DeleteUser.js"
 
 function DeleteUserPage(props) {
   return (
-    <>
+    <div>
       <Menu />
-      <p>Are you sure you want to delete your account? This process cannot be reversed.</p>
-      <DeleteUser />
-    </>
+      <div className="delete-user">
+        <p>Are you sure you want to delete your account? This process cannot be reversed.</p>
+        <DeleteUser />
+      </div>
+    </div>
   )
 }
 

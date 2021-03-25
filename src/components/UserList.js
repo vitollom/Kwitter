@@ -17,8 +17,10 @@ function UserList() {
 
       {users.map((user) => {
         return <Card>
-         { `${user.username}`} <br/>
-         {`${user.about}`}
+          <Card.Body>
+            <Card.Title>{user.username}</Card.Title>
+            <Card.Text>{user.about}</Card.Text>
+          </Card.Body>
         </Card>;
       })}
     </div>

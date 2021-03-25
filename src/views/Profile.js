@@ -39,7 +39,7 @@ function Profile() {
             <DisplayUserPicture />
             <UploadPicture getUserInfo={getUserInfo} />
           </Col>
-          <Col className="profile-middle" >
+          <Col className="profile-middle"  >
             <UpdateUser getUserInfo={getUserInfo} />
             <Link to='/delete-user'>Delete Your Account</Link>
           </Col>

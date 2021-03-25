@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { deleteUser } from "../fetchRequests";
 import { useStore, DELETE_USER } from "../store/store"
+import { Button } from "react-bootstrap"
 
 function DeleteUser(props) {
   const username = useStore((state) => state.user.username);
@@ -15,14 +16,14 @@ function DeleteUser(props) {
         setErrors('')
         return dispatch({ type: DELETE_USER })
       } else {
-        setErrors(res.message)
+        setErrors(<div className="error">res.message</div>)
       }
     })
   }
 
   return (
     <div>
-      <button onClick={handleDelete}>Delete Account</button>
+      <Button variant="danger" onClick={handleDelete}>Delete Account</Button>
       {errors}
     </div>
   )

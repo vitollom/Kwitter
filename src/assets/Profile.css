@@ -21,3 +21,32 @@ div.container-fluid {
 .upload-picture input {
     margin: 2px;
 }
+
+.profile-middle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+div.form-group {
+    margin-top: 10px;
+}
+
+.profile-middle.col a {
+    margin-top: 8px;
+    color: blue;
+}
+
+form.update-user-form Button {
+    width: 100%;
+    background-color: rgb(73, 248, 161);
+    border-color: green;
+    color: lightyellow;
+}
+
+form.update-picture-form Button {
+    width: 100%;
+    background-color: rgb(73, 248, 161);
+    border-color: green;
+    color: lightyellow;
+}
