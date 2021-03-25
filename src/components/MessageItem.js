@@ -1,12 +1,15 @@
-import React from 'react'
-import { useStore } from '../store/store.js'
-import { deleteMessage } from '../fetchRequests.js'
+import React from "react";
+import { useStore } from "../store/store.js";
+import { deleteMessage } from "../fetchRequests.js";
+import { addLike } from "../fetchRequests.js";
+import { removeLike } from "../fetchRequests.js";
 import { Card } from "react-bootstrap"
 
+
 function MessageItem(props) {
-  const username = useStore((state) => state.user.username)
-  const token = useStore((state) => state.user.token)
-  const timestamp = new Date(props.createdAt)
+  const username = useStore((state) => state.user.username);
+  const token = useStore((state) => state.user.token);
+  const timestamp = new Date(props.createdAt);
 
   const handleDeleteMessage = () => {
     deleteMessage(props.id, token).then((res) => {
@@ -18,11 +21,32 @@ function MessageItem(props) {
   }
 
   let deleteButton
+
   if (username === props.username) {
-    deleteButton = <button onClick={handleDeleteMessage}>Delete Message</button>
+    deleteButton = (
+      <button onClick={handleDeleteMessage}>Delete Message</button>
+    );
   }
 
-  let likeButton = <button>Like</button> //No functionalliy, just for styling purposes.
+
+  const handleAddLike = (e) => {
+    addLike(props.message.id, token).then((res) => {
+      if (res.statusCode === 200) {
+        props.handleMessages();
+      }
+    });
+  };
+
+  const handleRemoveLike = (e) => {
+    const alreadyLiked = props.likes.find((like) => {
+      return like.username === username;
+    });
+    removeLike(alreadyLiked.id, token).then((res) => {
+      if (res.statusCode === 200) {
+        props.handleMessages();
+      }
+    });
+  };
 
   return (
     <li>
@@ -36,7 +60,8 @@ function MessageItem(props) {
         </Card.Body>
         <Card.Footer className="card-footer">
           <span>
-            {likeButton}
+             <button onClick={handleAddLike}>Like</button>
+             <button onClick={handleRemoveLike}>Unlike</button>
           &nbsp;
           Likes: {props.likes.length}
           </span>
@@ -44,7 +69,7 @@ function MessageItem(props) {
         </Card.Footer>
       </Card>
     </li>
-  )
+  );
 }
 
-export default MessageItem
+export default MessageItem;

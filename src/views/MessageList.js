@@ -3,12 +3,13 @@ import { useStore, GET_MESSAGES } from '../store/store';
 import { messageList } from '../fetchRequests';
 import Menu from '../components/Menu.js'
 import MessageItem from "../components/MessageItem.js";
-import CreateMessage from "../components/createMessage";
+import CreateMessage from "../components/createMessage.js";
+
 import "../assets/MessageList.css"
 
 function MessageList(props) {
-  const dispatch = useStore(state => state.dispatch)
-  const messages = useStore(state => state.messageData.messages)
+  const dispatch = useStore((state) => state.dispatch);
+  const messages = useStore((state) => state.messageData.messages);
 
   const [refresh, setRefresh] = useState(30)
   const refreshRef = useRef(refresh)
@@ -61,4 +62,4 @@ function MessageList(props) {
   )
 }
 
-export default MessageList
+export default MessageList;
