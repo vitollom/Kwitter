@@ -11,7 +11,6 @@ function Menu(props) {
 
   const logout = (e) => {
     logoutRequest(user.token).then(() => dispatch({ type: "LOGOUT" }));
-
   };
 
   return (
@@ -20,22 +19,23 @@ function Menu(props) {
         &nbsp;
         Kwitter
       </div>
-      <div className="nav-right">
-        <Nav.Item>
-          <Link to="/" >Home</Link> &nbsp;
+      
+      {user.token &&
+        <div className="nav-right">
+          <Nav.Item>
+            <Link to="/profile">Profile</Link> &nbsp;
       </Nav.Item>
-        <Nav.Item>
-          <Link to="/profile">Profile</Link> &nbsp;
+          <Nav.Item>
+            <Link to="/messages">Message Page</Link> &nbsp;
       </Nav.Item>
-        <Nav.Item>
-          <Link to="/messages">Message Page</Link> &nbsp;
-      </Nav.Item>
-        <Nav.Item>
-          <Link onClick={logout}>
-            Logout
+          <Nav.Item>
+            <Link to="/" onClick={logout}>
+              Logout
       </Link> &nbsp;
       </Nav.Item>
-      </div>
+        </div>
+      }
+    
     </Nav>
   );
 };

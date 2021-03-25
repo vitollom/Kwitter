@@ -33,6 +33,7 @@ function MessageItem(props) {
     addLike(props.message.id, token).then((res) => {
       if (res.statusCode === 200) {
         props.handleMessages();
+        props.setRefresh(30);
       }
     });
   };
@@ -44,6 +45,7 @@ function MessageItem(props) {
     removeLike(alreadyLiked.id, token).then((res) => {
       if (res.statusCode === 200) {
         props.handleMessages();
+        props.setRefresh(30);
       }
     });
   };
@@ -60,8 +62,9 @@ function MessageItem(props) {
         </Card.Body>
         <Card.Footer className="card-footer">
           <span>
-             <button onClick={handleAddLike}>Like</button>
-             <button onClick={handleRemoveLike}>Unlike</button>
+            <button onClick={handleAddLike}>Like</button>
+            &nbsp;
+            <button onClick={handleRemoveLike}>Remove Like</button>
           &nbsp;
           Likes: {props.likes.length}
           </span>

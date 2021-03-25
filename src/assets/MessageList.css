@@ -28,7 +28,7 @@ div.card-header {
   margin-top: 10px;
   width: 90%;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 .CreateMessage button {
@@ -38,8 +38,7 @@ div.card-header {
 
 .CreateMessage label {
   font-size: large;
-  width: 8%;
-  max-height: 30px;
+  font-weight: bold;
 }
 
 .new-message-input {

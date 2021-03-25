@@ -44,7 +44,6 @@ function MessageList(props) {
     <>
       <Menu />
       <div className="MessageList">
-        {/* {refresh} */}
         <CreateMessage className="CreateMessage" handleMessages={handleMessages} setRefresh={setRefresh} />
         <ul>
           {messages && messages.map((message) => (
