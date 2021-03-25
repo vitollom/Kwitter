@@ -3,6 +3,8 @@ import { useStore } from "../store/store.js";
 import { deleteMessage } from "../fetchRequests.js";
 import { addLike } from "../fetchRequests.js";
 import { removeLike } from "../fetchRequests.js";
+import { Card } from "react-bootstrap"
+
 
 function MessageItem(props) {
   const username = useStore((state) => state.user.username);
@@ -12,17 +14,20 @@ function MessageItem(props) {
   const handleDeleteMessage = () => {
     deleteMessage(props.id, token).then((res) => {
       if (res.statusCode === 200) {
-        props.handleMessages();
+        props.handleMessages()
+        props.setRefresh(30)
       }
-    });
-  };
+    })
+  }
 
-  let deleteButton;
+  let deleteButton
+
   if (username === props.username) {
     deleteButton = (
       <button onClick={handleDeleteMessage}>Delete Message</button>
     );
   }
+
 
   const handleAddLike = (e) => {
     addLike(props.message.id, token).then((res) => {
@@ -41,22 +46,28 @@ function MessageItem(props) {
         props.handleMessages();
       }
     });
-    //Add .then to removeLike fetch request
-    //Inside of .then, dispatch removeLike
   };
 
   return (
     <li>
-      Created @ {timestamp.toLocaleString()}
-      &nbsp; By: {props.username}
-      <br />
-      {props.text}
-      <br />
-      Likes: {props.likes.length}
-      &nbsp;
-      {deleteButton}
-      <button onClick={handleAddLike}>Like</button>
-      <button onClick={handleRemoveLike}>Unlike</button>
+      <Card>
+        <Card.Header>Created @ {timestamp.toLocaleString()}</Card.Header>
+        <Card.Body>
+          <Card.Title>{`${props.username}:`}</Card.Title>
+          <Card.Text>
+            <p class="card-text">{props.text}</p>
+          </Card.Text>
+        </Card.Body>
+        <Card.Footer className="card-footer">
+          <span>
+             <button onClick={handleAddLike}>Like</button>
+             <button onClick={handleRemoveLike}>Unlike</button>
+          &nbsp;
+          Likes: {props.likes.length}
+          </span>
+          {deleteButton}
+        </Card.Footer>
+      </Card>
     </li>
   );
 }
