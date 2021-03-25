@@ -6,6 +6,8 @@ import DisplayUserPicture from "../components/DisplayUserPicture.js"
 import UpdateUser from "../components/UpdateUser.js";
 import UploadPicture from "../components/UploadPicture"
 import { Link } from 'react-router-dom';
+import UserList from "../components/UserList.js";
+
 
 function Profile() {
   const username = useStore((state) => state.user.username)
@@ -30,6 +32,7 @@ function Profile() {
       <UpdateUser getUserInfo={getUserInfo} />
       <UploadPicture getUserInfo={getUserInfo} />
       <Link to='/delete-user'>Delete Your Account</Link>
+      <UserList />
     </div>
   );
 }
