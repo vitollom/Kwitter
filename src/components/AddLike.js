@@ -2,23 +2,18 @@ import React, { useState } from "react";
 import { addLike, messageList } from "../fetchRequests";
 import { useStore, ADDLIKE } from "../store/store";
 
-function AddLike(props) {
+function addLike(props) {
   const dispatch = useStore((state) => state.dispatch);
+  const messages = useStore((state) => state.messageData);
+  const user = useStore((state) => state.userData);
 
-  const [formData, setFormData] = useState({
-    like: {
-      id: messageId,
-      username: "string",
-    },
-    statusCode: 0,
-  });
   const handleAddLike = (e) => {
     e.preventDefault();
-    addLike(formData.messageId).then((userData) =>
+    addLike(user.token).then((userData) =>
       dispatch({ type: ADDLIKE, payload: userData })
     );
-    setFormData({ username: "", displayName: "", password: "" });
   };
+  console.log(messages);
   return (
     <Button
       content="Like"

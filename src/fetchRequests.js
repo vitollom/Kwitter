@@ -1,8 +1,9 @@
+import { useStore } from "./store/store.js";
 const baseURL = "https://socialapp-api.herokuapp.com/";
-const backupURL = "https://kwitter-api-b.herokuapp.com/";
+//const backupURL = "https://kwitter-api-b.herokuapp.com/";
 
 export const loginRequest = (username, password) => {
-  return fetch(backupURL + "auth/login", {
+  return fetch(baseURL + "auth/login", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -13,20 +14,20 @@ export const loginRequest = (username, password) => {
 };
 
 export const logoutRequest = (token) => {
-  return fetch(backupURL + "auth/logout", {
+  return fetch(baseURL + "auth/logout", {
     headers: { Authorization: "Bearer " + token },
   }).then((res) => res.json());
 };
 
 export const getUser = (username) => {
-  return fetch(backupURL + "users/" + username, {
+  return fetch(baseURL + "users/" + username, {
     method: "GET",
     headers: { "Content-Type": "application/json" },
   }).then((res) => res.json());
 };
 
 export const updateRequest = (token, username, updateData) => {
-  return fetch(backupURL + "users/" + username, {
+  return fetch(baseURL + "users/" + username, {
     method: "PATCH",
     headers: {
       Authorization: `Bearer ${token}`,
@@ -37,14 +38,14 @@ export const updateRequest = (token, username, updateData) => {
 };
 
 export const messageList = () => {
-  return fetch(backupURL + "messages?limit=100", {
+  return fetch(baseURL + "messages?limit=100", {
     method: "GET",
     headers: { "Content-Type": "application/json" },
   }).then((res) => res.json());
 };
 
 export const createUser = (username, displayName, password) => {
-  return fetch(backupURL + "users", {
+  return fetch(baseURL + "users", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -54,18 +55,28 @@ export const createUser = (username, displayName, password) => {
     }),
   }).then((res) => res.json());
 };
-export const addLike = (messageId) => {
-  return fetch(backupURL + "messages/", {
+export const addLike = (messageId, token) => {
+  return fetch(baseURL + "likes/", {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + token,
+    },
     body: JSON.stringify({
       messageId,
     }),
   }).then((res) => res.json());
 };
 
+export const removeLike = (messageId, token) => {
+  return fetch(baseURL + "likes/" + messageId, {
+    method: "DELETE",
+    headers: { Authorization: "Bearer " + token },
+  }).then((res) => res.json());
+};
+
 export const deleteMessage = (messageId, token) => {
-  return fetch(backupURL + "messages/" + messageId, {
+  return fetch(baseURL + "messages/" + messageId, {
     method: "DELETE",
     headers: { Authorization: "Bearer " + token },
   }).then((res) => res.json());
@@ -73,7 +84,7 @@ export const deleteMessage = (messageId, token) => {
 
 export const createMessage = (message, token) => {
   console.log(message);
-  return fetch(backupURL + "messages", {
+  return fetch(baseURL + "messages", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

@@ -3,7 +3,7 @@ import { useStore, GETMESSAGES } from "../store/store";
 import { messageList } from "../fetchRequests";
 import Menu from "../components/Menu.js";
 import MessageItem from "../components/MessageItem.js";
-import CreateMessage from "../components/createMessage";
+import CreateMessage from "../components/CreateMessage";
 
 function MessageList(props) {
   const dispatch = useStore((state) => state.dispatch);
