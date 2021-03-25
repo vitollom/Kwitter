@@ -32,13 +32,17 @@ div.card-header {
 }
 
 .CreateMessage button {
-  width: 5%
+  width: 5%;
+  max-height: 30px;
 }
 
 .CreateMessage label {
   font-size: large;
+  width: 8%;
+  max-height: 30px;
 }
 
 .new-message-input {
-  width: 88%
+  max-height: 30px;
+  width: 87%
 }

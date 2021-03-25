@@ -1,4 +1,5 @@
 .justify-content-between {
+  display: flex;
   font-size: large;
   background-color: rgb(73, 248, 161); 
 }
