@@ -3,7 +3,7 @@ import { useStore, GET_MESSAGES } from '../store/store';
 import { messageList } from '../fetchRequests';
 import Menu from '../components/Menu.js'
 import MessageItem from "../components/MessageItem.js";
-import CreateMessage from "../components/createMessage.js";
+import CreateMessage from "../components/CreateMessage.js";
 
 import "../assets/MessageList.css"
 
@@ -41,22 +41,23 @@ function MessageList(props) {
   }, [setRefresh])
 
   return (
-    <div className="MessageList">
+    <>
       <Menu />
-      {refresh}
-      <CreateMessage className="CreateMessage" handleMessages={handleMessages} setRefresh={setRefresh} />
-      <ul>
-        {messages && messages.map((message) => (
-          <MessageItem
-            {...message}
-            key={message.id}
-            message={message}
-            handleMessages={handleMessages}
-            setRefresh={setRefresh}
-          />
-        ))}
-      </ul>
-    </div>
+      <div className="MessageList">
+        <CreateMessage className="CreateMessage" handleMessages={handleMessages} setRefresh={setRefresh} />
+        <ul>
+          {messages && messages.map((message) => (
+            <MessageItem
+              {...message}
+              key={message.id}
+              message={message}
+              handleMessages={handleMessages}
+              setRefresh={setRefresh}
+            />
+          ))}
+        </ul>
+      </div>
+    </>
   )
 }
 

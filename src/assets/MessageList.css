@@ -20,20 +20,28 @@ li {
   justify-content: space-between;
 }
 
+div.card-header {
+  background-color: rgb(205, 253, 229);
+}
+
 .CreateMessage {
+  margin-top: 10px;
   width: 90%;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 .CreateMessage button {
-  width: 5%
+  width: 5%;
+  max-height: 30px;
 }
 
 .CreateMessage label {
   font-size: large;
+  font-weight: bold;
 }
 
 .new-message-input {
-  width: 88%
+  max-height: 30px;
+  width: 87%
 }

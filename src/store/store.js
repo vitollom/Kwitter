@@ -18,13 +18,13 @@ const reducer = (state, action) => {
     case LOGIN:
       return { user: action.payload };
     case LOGOUT:
-      return { user: {} };
+      return { user: {}, messageData: [], loggedInUser: {}  };
     case GET_USER:
       return { loggedInUser: action.payload }
     case GET_MESSAGES:
       return { messageData: action.payload };
     case DELETE_USER:
-      return { user: {} };
+      return { user: {}, messageData: [], loggedInUser: {}  };
     default:
       return state;
   }

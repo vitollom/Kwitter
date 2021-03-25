@@ -23,7 +23,7 @@ function CreateMessage(props) {
 
   return (
     <div className="CreateMessage" >
-      <label htmlFor="newMessage">New Message</label>
+      <label htmlFor="new-message">New Message</label>
       &nbsp;
       <input
         className="new-message-input"
