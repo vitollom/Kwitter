@@ -5,6 +5,7 @@ import MessageList from "./views/MessageList";
 import DeleteUserPage from './views/DeleteUserPage'
 import NotFound from "./views/NotFound";
 import { useStore } from "./store/store.js"
+import userList from "./components/UserList";
 
 function App() {
   const token = useStore((state) => state.user.token)
@@ -19,6 +20,9 @@ function App() {
           {!token && <Redirect to="/" />}
         </Route>
         <Route path="/messages" component={MessageList}>
+          {!token && <Redirect to="/" />}
+        </Route>
+        <Route path="/users" component={userList}>
           {!token && <Redirect to="/" />}
         </Route>
         <Route path="/delete-user" component={DeleteUserPage}>

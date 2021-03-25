@@ -91,3 +91,7 @@ export const uploadPicture = (username, token, pictureData) => {
     body: formData,
   }).then((res) => res.json())
 }
+
+export const userList = () => {
+  return fetch(baseURL + "users?limit=50").then((res) => res.json())
+}

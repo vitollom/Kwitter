@@ -22,7 +22,7 @@ function MessageItem(props) {
     deleteButton = <button onClick={handleDeleteMessage}>Delete Message</button>
   }
 
-  let likeButton = <button>Like</button> //No functionalliy, just for styling purposes.
+  let likeButton = <button>Like</button> //No functionality, just for styling purposes.
 
   return (
     <li>
