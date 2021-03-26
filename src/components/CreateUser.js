@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { createUser } from "../fetchRequests";
-import { Form } from "react-bootstrap";
+import { Form, Button } from "react-bootstrap";
 
 function CreateUser(props) {
   const [errors, setErrors] = useState("");
@@ -34,7 +34,7 @@ function CreateUser(props) {
 
   return (
     <>
-      <h3>New to kwitter? Sign up here:</h3>
+      <h3>New to Kwitter? Sign up here:</h3>
       <Form onSubmit={handleCreateUser}>
         <Form.Group controlId="formBasicEmail">
           <Form.Label>Username</Form.Label>
@@ -70,7 +70,7 @@ function CreateUser(props) {
           <Form.Control
             name="displayName"
             type="displayName"
-            placeholder="displayName"
+            placeholder="Display Name"
             pattern=".{3,20}"
             title="Please enter a valid password between 3 and 20 characters."
             value={formData.displayName}
@@ -79,7 +79,7 @@ function CreateUser(props) {
           />
         </Form.Group>
 
-        <button type="submit"> Submit </button>
+        <Button type="submit"> Submit </Button>
       </Form>
       {errors}
     </>

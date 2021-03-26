@@ -1,7 +1,7 @@
-a {
-    color: blue
-}
-
 .not-found {
     margin: 20px;
+}
+
+.not-found a {
+    color: blue;
 }

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { loginRequest } from "../fetchRequests";
 import { LOGIN, useStore } from "../store/store";
 import CreateUser from "./CreateUser.js";
-import { Form } from "react-bootstrap";
+import { Form, Button } from "react-bootstrap";
 
 function Login(props) {
   const dispatch = useStore((state) => state.dispatch);
@@ -31,7 +31,7 @@ function Login(props) {
 
   return (
     <>
-      <h2>Your favorite microblogging platform</h2>
+      <h2>Your favorite microblogging platform!</h2>
       <Form onSubmit={handleLogin}>
         <Form.Group controlId="formBasicEmail">
           <Form.Label>Username</Form.Label>
@@ -62,9 +62,9 @@ function Login(props) {
           />
         </Form.Group>
 
-        <button variant="primary" type="submit">
+        <Button variant="primary" type="submit">
           Submit
-        </button>
+        </Button>
       </Form>
       {errors}
       <CreateUser />

@@ -1,0 +1,20 @@
+button.btn.btn-primary {
+    position: relative;
+    top: 3px;
+    background-color: rgb(53, 173, 113);
+    border-color: green;
+    color: white;
+}
+
+form {
+    padding: 2px;
+    margin: 5px;
+}
+
+h2 {
+    padding-left: 5px;
+}
+
+h3 {
+    padding-left: 5px;
+}

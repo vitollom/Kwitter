@@ -45,6 +45,7 @@ function MessageList(props) {
       <Menu />
       <div className="MessageList">
         <CreateMessage className="CreateMessage" handleMessages={handleMessages} setRefresh={setRefresh} />
+        Auto refresh in: {refresh} second(s)
         <ul>
           {messages ? messages.map((message) => (
             <MessageItem
