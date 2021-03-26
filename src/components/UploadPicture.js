@@ -24,8 +24,9 @@ function UploadPicture(props) {
 
   return (
     <Form className="update-picture-form" onSubmit={handleUpload}>
+      <Form.Label>{errors}</Form.Label>
       <Form.Group>
-        <Form.File id="photo-uploader" label={errors} onChange={(e) => setPicture(e.target.files[0])} />
+        <Form.File id="photo-uploader" onChange={(e) => setPicture(e.target.files[0])} />
       </Form.Group>
       <Form.Group>
         <Button variant="primary" active={false} type="submit">Upload Picture</Button>

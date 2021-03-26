@@ -51,6 +51,7 @@ function UpdateUser(props) {
 
   return (
     <>
+      <h2>Update User</h2>
       <Form className="update-user-form" onSubmit={handleUpdate}>
         <Form.Group controlId="displayName">
           <Form.Label>Display Name</Form.Label>

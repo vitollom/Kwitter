@@ -10,6 +10,7 @@ div.container-fluid {
 
 .user-picture {
     max-width: 100%;
+    border-radius: 10px;
 }
 
 .upload-picture {
@@ -22,7 +23,7 @@ div.container-fluid {
     margin: 2px;
 }
 
-.profile-middle {
+div.profile-middle.col {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -37,16 +38,35 @@ div.form-group {
     color: blue;
 }
 
+form.update-user-form {
+    width: 90%;
+}
+
 form.update-user-form Button {
     width: 100%;
-    background-color: rgb(73, 248, 161);
+    background-color: rgb(53, 173, 113);
     border-color: green;
-    color: lightyellow;
+    color: white;
 }
 
 form.update-picture-form Button {
     width: 100%;
-    background-color: rgb(73, 248, 161);
+    background-color: rgb(53, 173, 113);
     border-color: green;
-    color: lightyellow;
+    color: white;
+}
+
+.profile-right {
+    width: 90%;
+    display: flex;
+    justify-content: center;
+}
+
+.kwitter-user-list {
+    width: 90%;
+}
+
+.kwitter-new-users {
+    display: flex;
+    justify-content: center;
 }

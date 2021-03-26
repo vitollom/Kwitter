@@ -21,7 +21,7 @@ li {
 }
 
 div.card-header {
-  background-color: rgb(205, 253, 229);
+  background-color: rgb(173, 231, 202);
 }
 
 .CreateMessage {
@@ -44,4 +44,8 @@ div.card-header {
 .new-message-input {
   max-height: 30px;
   width: 85%
+}
+
+.new-message-error {
+  
 }

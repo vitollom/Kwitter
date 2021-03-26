@@ -1,12 +1,12 @@
 .justify-content-between {
   display: flex;
   font-size: large;
-  background-color: rgb(73, 248, 161); 
+  background-color: rgb(53, 173, 113); 
 }
 
 .nav-left {
   font-size: xx-large;
-  color: lightyellow;
+  color: white;
 }
 
 .nav-right {
@@ -15,5 +15,13 @@
 }
 
 a {
-  color: blue
+  color: white
+}
+
+button.btn.btn-link {
+  color: white;
+  font-size: 18px;
+  border: 0px;
+  padding: 0px;
+  padding-bottom: 1px;
 }
