@@ -5,6 +5,7 @@ import '../assets/index.css'
 
 function CreateMessage(props) {
   const token = useStore((state) => state.user.token);
+  const [errors, setErrors] = useState("")
   const [userText, setUserText] = useState("");
 
   const createNewMessage = (e) => {
@@ -12,6 +13,8 @@ function CreateMessage(props) {
       if (res.statusCode === 200) {
         props.handleMessages()
         props.setRefresh(30)
+      } else {
+        setErrors(<div className="error">{res.message}</div>)
       }
     })
     setUserText("");
@@ -33,6 +36,7 @@ function CreateMessage(props) {
       />
       &nbsp;
       <button onClick={createNewMessage}>Post</button>
+      <div className="new-message-error">{errors}</div>
     </div>
   )
 };

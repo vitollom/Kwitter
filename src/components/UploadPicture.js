@@ -1,33 +1,37 @@
 import React, { useState } from 'react'
 import { uploadPicture } from '../fetchRequests.js'
 import { useStore } from "../store/store.js"
+import { Form, Button } from "react-bootstrap"
 
 function UploadPicture(props) {
   const username = useStore((state) => state.user.username)
   const token = useStore((state) => state.user.token)
   const [picture, setPicture] = useState('')
-  const [errors, setErrors] = useState('')
+  const [errors, setErrors] = useState('Please choose a picture that is 200KB or less in size.')
 
   const handleUpload = (e) => {
+    e.preventDefault()
     uploadPicture(username, token, picture).then((res) => {
       if (res.statusCode === 200) {
         props.getUserInfo()
-        setErrors("You have successfully updated your profile picture.")
+        setErrors(<div className="success">You have successfully updated your profile picture.</div>)
         setPicture('')
       } else {
-        setErrors(res.message)
+        setErrors(<div className="error">Something went wrong, make sure your file is 200KB or less and try again. Error: {res.message}.</div>)
       }
     })
   }
 
   return (
-    <div>
-      <button onClick={handleUpload} >Upload Picture</button>
-      <input type="file" onChange={(e) => setPicture(e.target.files[0])} />
-      <>Please choose a picture that is 200KB or less in size.</>
-      <br/>
-      {errors}
-    </div>
+    <Form className="update-picture-form" onSubmit={handleUpload}>
+      <Form.Label>{errors}</Form.Label>
+      <Form.Group>
+        <Form.File id="photo-uploader" onChange={(e) => setPicture(e.target.files[0])} />
+      </Form.Group>
+      <Form.Group>
+        <Button variant="primary" active={false} type="submit">Upload Picture</Button>
+      </Form.Group>
+    </Form>
   )
 }
 

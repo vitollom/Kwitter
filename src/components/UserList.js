@@ -12,13 +12,14 @@ function UserList() {
   }, []);
 
   return (
-    <div>
-      <h1>User List</h1>
-
+    <div className="kwitter-user-list">
+      <h1 className="kwitter-new-users">Kwitter's Newest Users!</h1>
       {users.map((user) => {
         return <Card>
-         { `${user.username}`} <br/>
-         {`${user.about}`}
+          <Card.Body>
+            <Card.Title>{user.username}</Card.Title>
+            <Card.Text>{user.about}</Card.Text>
+          </Card.Body>
         </Card>;
       })}
     </div>

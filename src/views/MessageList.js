@@ -46,7 +46,7 @@ function MessageList(props) {
       <div className="MessageList">
         <CreateMessage className="CreateMessage" handleMessages={handleMessages} setRefresh={setRefresh} />
         <ul>
-          {messages && messages.map((message) => (
+          {messages ? messages.map((message) => (
             <MessageItem
               {...message}
               key={message.id}
@@ -54,7 +54,7 @@ function MessageList(props) {
               handleMessages={handleMessages}
               setRefresh={setRefresh}
             />
-          ))}
+          )) : <div className="MessageList">Loading messages...</div>}
         </ul>
       </div>
     </>

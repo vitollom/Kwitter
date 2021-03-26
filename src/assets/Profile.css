@@ -1,0 +1,72 @@
+div.container-fluid {
+    margin-top: 10px;
+}
+
+.profile-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.user-picture {
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+.upload-picture {
+    margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.upload-picture input {
+    margin: 2px;
+}
+
+div.profile-middle.col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+div.form-group {
+    margin-top: 10px;
+}
+
+.profile-middle.col a {
+    margin-top: 8px;
+    color: blue;
+}
+
+form.update-user-form {
+    width: 90%;
+}
+
+form.update-user-form Button {
+    width: 100%;
+    background-color: rgb(53, 173, 113);
+    border-color: green;
+    color: white;
+}
+
+form.update-picture-form Button {
+    width: 100%;
+    background-color: rgb(53, 173, 113);
+    border-color: green;
+    color: white;
+}
+
+.profile-right {
+    width: 90%;
+    display: flex;
+    justify-content: center;
+}
+
+.kwitter-user-list {
+    width: 90%;
+}
+
+.kwitter-new-users {
+    display: flex;
+    justify-content: center;
+}

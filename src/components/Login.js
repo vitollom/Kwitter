@@ -18,7 +18,7 @@ function Login(props) {
       if (userData.statusCode === 200) {
         return dispatch({ type: LOGIN, payload: userData });
       } else {
-        setErrors(`${userData.message}, please try again`);
+        setErrors(<div className="error">{userData.message}, please try again.</div>)
       }
     });
   };

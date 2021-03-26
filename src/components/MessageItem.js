@@ -57,7 +57,7 @@ function MessageItem(props) {
         <Card.Body>
           <Card.Title>{`${props.username}:`}</Card.Title>
           <Card.Text>
-            <p class="card-text">{props.text}</p>
+            {props.text}
           </Card.Text>
         </Card.Body>
         <Card.Footer className="card-footer">

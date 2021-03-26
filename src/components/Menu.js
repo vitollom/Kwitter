@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useStore } from "../store/store";
 import { logoutRequest } from "../fetchRequests";
-import { Nav } from "react-bootstrap"
+import { Nav, Button } from "react-bootstrap"
 import "../assets/Menu.css"
 
 function Menu(props) {
@@ -29,9 +29,9 @@ function Menu(props) {
             <Link to="/messages">Message Page</Link> &nbsp;
       </Nav.Item>
           <Nav.Item>
-            <Link to="/" onClick={logout}>
+            <Button variant="link" onClick={logout}>
               Logout
-      </Link> &nbsp;
+      </Button> &nbsp;
       </Nav.Item>
         </div>
       }

@@ -11,3 +11,15 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.error {
+  color: red;
+}
+
+.success {
+  color: rgb(4, 184, 4);
+}
+
+.delete-user {
+  margin: 20px;
+}

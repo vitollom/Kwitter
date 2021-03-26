@@ -14,11 +14,11 @@ function CreateUser(props) {
     createUser(formData.username, formData.displayName, formData.password).then(
       (res) => {
         if (res.statusCode !== 200) {
-          setErrors(`${res.message}, please try again`);
+          setErrors(<div className="error">{res.message}, please try again</div>);
         } else {
           setFormData({ username: "", displayName: "", password: "" });
           setErrors(
-            `You have successfully created a user: ${res.user.username}!`
+            <div className="success">You have successfully created a user: {res.user.username}!</div>
           );
         }
       }

@@ -7,7 +7,7 @@ function DisplayUserPicture() {
 
   let userImage
   if (userInfo) {
-    userImage = <img src={baseURL + userInfo.pictureLocation} />
+    userImage = <img className="user-picture" src={baseURL + userInfo.pictureLocation} />
   } else {
     userImage = "Loading..."
   }
