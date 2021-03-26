@@ -8,6 +8,7 @@ function Home(props) {
   const user = useStore((state) => state.user);
   return (
     <>
+    
       <Menu />
       {!user.token && <Login />}
     </>
