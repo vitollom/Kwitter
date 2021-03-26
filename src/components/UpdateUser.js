@@ -26,21 +26,27 @@ function UpdateUser(props) {
       updateData.displayName = formData.displayName
     }
 
-    updateRequest(token, username, updateData)
-      .then(res => {
-        if (res.statusCode === 200) {
-          setFormData({
-            password: "",
-            about: "",
-            displayName: ""
-          })
-          setErrors('You have successfully updated your account!')
-          props.getUserInfo()
-        }
-        else {
-          setErrors(res.message)
-        }
-      })
+    console.log(Object.keys(updateData).length)
+
+    if (Object.keys(updateData).length === 0) {
+      setErrors(<div className="error">Please update one of the above fields.</div >)
+    } else {
+      updateRequest(token, username, updateData)
+        .then(res => {
+          if (res.statusCode === 200) {
+            setFormData({
+              password: "",
+              about: "",
+              displayName: ""
+            })
+            setErrors(<div className="success">You have successfully updated your account!</div>)
+            props.getUserInfo()
+          }
+          else {
+            setErrors(<div className="error">res.message</div>)
+          }
+        })
+    }
   };
 
   const handleChange = (e) => {
@@ -92,7 +98,7 @@ function UpdateUser(props) {
             onChange={handleChange}
           />
           <Form.Text className="text-muted">
-          {`${formData.about.length}/255`}
+            {`${formData.about.length}/255`}
           </Form.Text>
         </Form.Group>
 

@@ -3,7 +3,7 @@ import { useStore } from "../store/store.js";
 import { deleteMessage } from "../fetchRequests.js";
 import { addLike } from "../fetchRequests.js";
 import { removeLike } from "../fetchRequests.js";
-import { Card } from "react-bootstrap"
+import { Card, Button } from "react-bootstrap"
 
 
 function MessageItem(props) {
@@ -24,7 +24,7 @@ function MessageItem(props) {
 
   if (username === props.username) {
     deleteButton = (
-      <button onClick={handleDeleteMessage}>Delete Message</button>
+      <Button variant="danger" className="delete-message" onClick={handleDeleteMessage}>Delete Message</Button>
     );
   }
 
@@ -37,11 +37,12 @@ function MessageItem(props) {
       }
     });
   };
+  
+  const alreadyLiked = props.likes.find((like) => {
+    return like.username === username;
+  });
 
   const handleRemoveLike = (e) => {
-    const alreadyLiked = props.likes.find((like) => {
-      return like.username === username;
-    });
     removeLike(alreadyLiked.id, token).then((res) => {
       if (res.statusCode === 200) {
         props.handleMessages();
@@ -49,6 +50,13 @@ function MessageItem(props) {
       }
     });
   };
+
+  let likeButton 
+  if (alreadyLiked) {
+    likeButton = <Button variant="outline-success" className="remove-like" onClick={handleRemoveLike}>Remove Like</Button>
+  } else {
+    likeButton = <Button className="like-button" onClick={handleAddLike}>Like</Button>
+  }
 
   return (
     <li>
@@ -62,9 +70,7 @@ function MessageItem(props) {
         </Card.Body>
         <Card.Footer className="card-footer">
           <span>
-            <button onClick={handleAddLike}>Like</button>
-            &nbsp;
-            <button onClick={handleRemoveLike}>Remove Like</button>
+            {likeButton}
           &nbsp;
           Likes: {props.likes.length}
           </span>

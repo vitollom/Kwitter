@@ -45,3 +45,23 @@ div.card-header {
   max-height: 30px;
   width: 85%
 }
+
+.like-button {
+  background-color: rgb(53, 173, 113);
+  border-color: green;
+  color: white;
+}
+
+.like-button:focus {
+  background-color: rgb(53, 173, 113);
+  border-color: green;
+  color: white;
+  box-shadow: none;
+}
+
+.remove-like:focus {
+  background-color: white;
+  border-color: green;
+  color: green;
+  box-shadow: none;
+}
