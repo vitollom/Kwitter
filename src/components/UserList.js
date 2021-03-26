@@ -17,7 +17,7 @@ function UserList() {
     <div className="kwitter-user-list">
       <h1 className="kwitter-new-users">Kwitter's Newest Users!</h1>
       {users.map((user) => {
-        return <Card className="kwitter-user-card">
+        return <Card className="kwitter-user-card" key={user.username}>
           <Card.Body className="kwitter-users-left">
             {
               user.pictureLocation ?
