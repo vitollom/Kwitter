@@ -70,3 +70,22 @@ form.update-picture-form Button {
     display: flex;
     justify-content: center;
 }
+
+.users-list-picture {
+    height: 60px;
+    width: 60px;
+}
+
+.kwitter-user-card {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.kwitter-users-left {
+    width: 50px;
+}
+
+.kwitter-users-right {
+    align-items: flex-start;
+}
