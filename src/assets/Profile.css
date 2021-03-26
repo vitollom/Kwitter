@@ -49,6 +49,21 @@ form.update-user-form Button {
     color: white;
 }
 
+form.update-picture-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+label.form-label {
+    align-self: center;
+}
+
+input#photo-uploader.form-contorl-file {
+    align-self: center;
+}
+
 form.update-picture-form Button {
     width: 100%;
     background-color: rgb(53, 173, 113);
@@ -69,4 +84,23 @@ form.update-picture-form Button {
 .kwitter-new-users {
     display: flex;
     justify-content: center;
+}
+
+.users-list-picture {
+    height: 60px;
+    width: 60px;
+}
+
+.kwitter-user-card {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.kwitter-users-left {
+    width: 50px;
+}
+
+.kwitter-users-right {
+    align-items: flex-start;
 }
