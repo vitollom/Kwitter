@@ -47,6 +47,7 @@ div.card-header {
 }
 
 .like-button {
+  width: 114px;
   background-color: rgb(53, 173, 113);
   border-color: green;
   color: white;

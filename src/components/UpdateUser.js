@@ -17,6 +17,7 @@ function UpdateUser(props) {
 
   const handleUpdate = (e) => {
     e.preventDefault()
+    setErrors("")
     const updateData = {}
     if (formData.password) {
       updateData.password = formData.password

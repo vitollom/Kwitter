@@ -28,6 +28,9 @@ function MessageItem(props) {
     );
   }
 
+  const alreadyLiked = props.likes.find((like) => {
+    return like.username === username;
+  });
 
   const handleAddLike = (e) => {
     addLike(props.message.id, token).then((res) => {
@@ -37,10 +40,6 @@ function MessageItem(props) {
       }
     });
   };
-  
-  const alreadyLiked = props.likes.find((like) => {
-    return like.username === username;
-  });
 
   const handleRemoveLike = (e) => {
     removeLike(alreadyLiked.id, token).then((res) => {
