@@ -1,0 +1,19 @@
+.justify-content-between {
+  display: flex;
+  font-size: large;
+  background-color: rgb(73, 248, 161); 
+}
+
+.nav-left {
+  font-size: xx-large;
+  color: white;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center
+}
+
+a {
+  color: blue
+}
