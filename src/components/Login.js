@@ -5,6 +5,7 @@ import CreateUser from "./CreateUser.js"
 
 function Login(props){
   const dispatch = useStore((state) => state.dispatch);
+  const [errors, setErrors] = useState("")
   const [formData, setFormData] = useState({
     username: "",
     password: "",
@@ -12,9 +13,14 @@ function Login(props){
 
   const handleLogin = (e) => {
     e.preventDefault();
-    loginRequest(formData.username, formData.password).then((userData) =>
-      dispatch({ type: LOGIN, payload: userData })
-      );
+    loginRequest(formData.username, formData.password)
+    .then((userData) => {
+      if (userData.statusCode === 200) {
+        return dispatch({ type: LOGIN, payload: userData })
+      } else {
+        setErrors(`${userData.message}, please try again`)
+      }
+    });
   };
 
   const handleChange = (e) => {
@@ -31,6 +37,8 @@ function Login(props){
         <input
           type="text"
           name="username"
+          pattern=".{3,20}"   
+          title="Please enter a valid username between 3 and 20 characters."
           value={formData.username}
           autoFocus
           required
@@ -40,12 +48,15 @@ function Login(props){
         <input
           type="password"
           name="password"
+          pattern=".{3,20}"   
+          title="Please enter a valid password between 3 and 20 characters."
           value={formData.password}
           required
           onChange={handleChange}
         />
         <button type="submit">Login</button>
       </form>
+      {errors}
       <CreateUser />
     </>
   );

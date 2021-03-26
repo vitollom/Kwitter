@@ -3,15 +3,14 @@ import { devtools, redux } from "zustand/middleware";
 
 // define the store's initial state
 
-const initialState = { user: { token: "" }, messageData: [], loggedInUser: {}, message: "" };
+const initialState = { user: { token: "" }, messageData: [], loggedInUser: {} };
 
 // set action types
 export const LOGIN = "LOGIN";
 export const LOGOUT = "LOGOUT";
-export const GETUSER = "GETUSER"
-export const GETMESSAGES = "GETMESSAGES";
-export const CREATEUSER = "CREATEUSER";
-export const CREATEMESSAGE = "CREATEMESSAGE";
+export const GET_USER = "GETUSER"
+export const GET_MESSAGES = "GETMESSAGES";
+export const DELETE_USER = "DELETEUSER"
 
 // define reducer function
 const reducer = (state, action) => {
@@ -20,14 +19,12 @@ const reducer = (state, action) => {
       return { user: action.payload };
     case LOGOUT:
       return { user: {} };
-    case GETUSER:
+    case GET_USER:
       return { loggedInUser: action.payload }
-    case GETMESSAGES:
+    case GET_MESSAGES:
       return { messageData: action.payload };
-    case CREATEMESSAGE:
-      return state;
-    case CREATEUSER:
-      return state;
+    case DELETE_USER:
+      return { user: {} };
     default:
       return state;
   }

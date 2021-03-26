@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useStore } from "../store/store";
 import { createMessage } from "../fetchRequests";
+import '../assets/index.css'
 
 function CreateMessage(props) {
   const token = useStore((state) => state.user.token);
@@ -8,10 +9,11 @@ function CreateMessage(props) {
 
   const createNewMessage = (e) => {
     createMessage(userText, token).then((res) => {
-      if (res.statusCode === 200) {
-        props.handleMessages();
-      }
-    });
+        if (res.statusCode === 200) {
+          props.handleMessages()
+          props.setRefresh(30)
+        }
+      })
     setUserText("");
   };
 
@@ -22,10 +24,14 @@ function CreateMessage(props) {
   return (
     <div>
       <label htmlFor="newMessage">New Message</label>
-      <input type="text" value={userText} onChange={handlechange} />
+      <input
+        type="text"
+        value={userText}
+        onChange={handlechange}
+      />
       <button onClick={createNewMessage}>Post</button>
     </div>
-  );
-}
+  )
+};
 
 export default CreateMessage;
