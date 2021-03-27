@@ -9,11 +9,11 @@ function CreateMessage(props) {
 
   const createNewMessage = (e) => {
     createMessage(userText, token).then((res) => {
-        if (res.statusCode === 200) {
-          props.handleMessages()
-          props.setRefresh(30)
-        }
-      })
+      if (res.statusCode === 200) {
+        props.handleMessages()
+        props.setRefresh(30)
+      }
+    })
     setUserText("");
   };
 
@@ -22,13 +22,16 @@ function CreateMessage(props) {
   };
 
   return (
-    <div>
+    <div className="CreateMessage" >
       <label htmlFor="newMessage">New Message</label>
+      &nbsp;
       <input
+        className="new-message-input"
         type="text"
         value={userText}
         onChange={handlechange}
       />
+      &nbsp;
       <button onClick={createNewMessage}>Post</button>
     </div>
   )
