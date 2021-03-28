@@ -91,7 +91,7 @@ export const uploadPicture = (username, token, pictureData) => {
     },
     body: formData,
   }).then((res) => res.json())
-}
+};
 
 export const addLike = (messageId, token) => {
   return fetch(baseURL + "likes/", {
