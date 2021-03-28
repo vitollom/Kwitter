@@ -1,5 +1,6 @@
 const baseURL = "https://socialapp-api.herokuapp.com/";
-// const backupURL = "https://kwitter-api-b.herokuapp.com/";
+//const backupURL = "https://kwitter-api-b.herokuapp.com/";
+
 
 export const loginRequest = (username, password) => {
   return fetch(baseURL + "auth/login", {
@@ -91,6 +92,26 @@ export const uploadPicture = (username, token, pictureData) => {
     body: formData,
   }).then((res) => res.json())
 }
+
+export const addLike = (messageId, token) => {
+  return fetch(baseURL + "likes/", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + token,
+    },
+    body: JSON.stringify({
+      messageId,
+    }),
+  }).then((res) => res.json());
+};
+
+export const removeLike = (messageId, token) => {
+  return fetch(baseURL + "likes/" + messageId, {
+    method: "DELETE",
+    headers: { Authorization: "Bearer " + token },
+  }).then((res) => res.json());
+};
 
 export const userList = () => {
   return fetch(baseURL + "users?limit=50").then((res) => res.json())

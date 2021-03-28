@@ -8,8 +8,8 @@ import CreateMessage from "../components/createMessage.js";
 import "../assets/MessageList.css"
 
 function MessageList(props) {
-  const dispatch = useStore(state => state.dispatch)
-  const messages = useStore(state => state.messageData.messages)
+  const dispatch = useStore((state) => state.dispatch);
+  const messages = useStore((state) => state.messageData.messages);
 
   const [refresh, setRefresh] = useState(30)
   const refreshRef = useRef(refresh)
@@ -60,4 +60,4 @@ function MessageList(props) {
   )
 }
 
-export default MessageList
+export default MessageList;
