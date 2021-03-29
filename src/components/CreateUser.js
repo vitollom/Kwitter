@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { createUser } from "../fetchRequests";
+import { Form } from "react-bootstrap";
 
 function CreateUser(props) {
   const [errors, setErrors] = useState("");
@@ -33,41 +34,53 @@ function CreateUser(props) {
 
   return (
     <>
-      <h3>New to Kwitter!? Sign Up Here: </h3>
-      <form id="login-form" onSubmit={handleCreateUser}>
-        <label htmlFor="username">Username</label>
-        <input
-          type="text"
-          name="username"
-          pattern=".{3,20}"
-          title="Please enter a username between 3 and 20 characters long"
-          value={formData.username}
-          autoFocus
-          required
-          onChange={handleChange}
-        />
-        <label htmlFor="password">Password</label>
-        <input
-          type="password"
-          name="password"
-          pattern=".{3,20}"
-          title="Please enter a password between 3 and 20 characters long"
-          value={formData.password}
-          required
-          onChange={handleChange}
-        />
-        <label htmlFor="displayName">Display Name </label>
-        <input
-          type="displayName"
-          name="displayName"
-          pattern=".{3,20}"
-          title="Please enter a display name between 3 and 20 characters long"
-          value={formData.displayName}
-          required
-          onChange={handleChange}
-        />
+      <h3>New to kwitter? Sign up here:</h3>
+      <Form onSubmit={handleCreateUser}>
+        <Form.Group controlId="formBasicEmail">
+          <Form.Label>Username</Form.Label>
+          <Form.Control
+            name="username"
+            type="text"
+            placeholder="Enter username"
+            pattern=".{3,20}"
+            title="Please enter a valid username between 3 and 20 characters."
+            value={formData.username}
+            autoFocus
+            required
+            onChange={handleChange}
+          />
+        </Form.Group>
+
+        <Form.Group controlId="formBasicPassword">
+          <Form.Label>Password</Form.Label>
+          <Form.Control
+            name="password"
+            type="password"
+            placeholder="Password"
+            pattern=".{3,20}"
+            title="Please enter a valid password between 3 and 20 characters."
+            value={formData.password}
+            required
+            onChange={handleChange}
+          />
+        </Form.Group>
+
+        <Form.Group controlId="formBasicDisplayName">
+          <Form.Label>Display Name</Form.Label>
+          <Form.Control
+            name="displayName"
+            type="displayName"
+            placeholder="displayName"
+            pattern=".{3,20}"
+            title="Please enter a valid password between 3 and 20 characters."
+            value={formData.displayName}
+            required
+            onChange={handleChange}
+          />
+        </Form.Group>
+
         <button type="submit"> Submit </button>
-      </form>
+      </Form>
       {errors}
     </>
   );
