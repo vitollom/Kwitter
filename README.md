@@ -1,7 +1,5 @@
 # Kwitter Group Project
 
-See my.kenzie.academy for details.
-
 ## Getting Started
 
 1. run `npm install` to install dependencies
