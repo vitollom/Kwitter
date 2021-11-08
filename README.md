@@ -4,7 +4,7 @@ Kwitter is a mock social media platform where users can create accounts, update 
 
 ## Getting Started
 
-1. clone down the repo using `git clone git@github.com:vitollom/Kwitter.git`
+1. clone down the repo ```bash git clone git@github.com:vitollom/Kwitter.git```
 2. run `npm install` to install dependencies
 3. run `npm start` to start the development server
 
